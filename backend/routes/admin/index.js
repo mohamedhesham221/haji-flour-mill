@@ -14,9 +14,4 @@ router
 
 router.post("/login", loginAdmin);
 
-// Temporary
-router.get("/dashboard", authanticateAdmin, (req, res) => {
-  res.json({message: "Admin authenticated"})
-})
-
 export default router

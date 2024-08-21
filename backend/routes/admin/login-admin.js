@@ -14,5 +14,4 @@ export default async (req, res) => {
         : error.message = "Server error"
     res.status(error.status).json(error);
   }
-  
 }

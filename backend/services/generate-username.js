@@ -20,6 +20,5 @@ export const generateUsername = async (firstName, existingUsernames) => {
           isUnique = true;
       }
   }
-
   return username;
 }
