@@ -1,4 +1,5 @@
 import User from "../../models/User.js";
+import jwt from "jsonwebtoken"
 import { generateUsername } from "../../services/generate-username.js";
 
 export const registerUser = async (userDetails) => {
@@ -17,5 +18,52 @@ export const registerUser = async (userDetails) => {
 
   } catch (error) {
     return Promise.reject(error);
+  }
+}
+
+const sign = (obj) => 
+  new Promise((resolve, reject) => {
+    jwt.sign(obj, process.env.JWT_SECRET, {expiresIn: "1h"}, (error, token) => {
+      if (error) return reject({ status: 500 });
+
+      return resolve(token);
+    })
+  })
+
+export const loginUser = async (userDetails) => {
+  const { username, password } = userDetails;
+
+  try {
+    let user = await User.findOne({ username });
+    console.log("user is present in database");
+
+    if (!user) {
+      return Promise.reject({ status: 400 });
+    } else {
+
+      try {
+        await user.checkPassword(password);
+        console.log("Checkpassword executed");
+
+        let jwt_payload = {
+          id: user._id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          isAdmin: user.isAdmin
+        };
+
+        let token = await sign(jwt_payload);
+
+        return Promise.resolve({
+          user: { id: user._id, username: user.username, isAdmin: user.isAdmin },
+          token: `Bearer ${token}`
+        });
+
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+  } catch (error) {
+    return Promise.reject({ status: 500 });
   }
 }
