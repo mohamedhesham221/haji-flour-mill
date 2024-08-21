@@ -13,7 +13,7 @@ export default async (req, res) => {
     error.status === 400
       ? error.message = "Invalid credantials"
       : error.message = "Server error"
-    res.status(500).json({ error });
+    res.status(error.status).json({ error });
 
   }
 }
