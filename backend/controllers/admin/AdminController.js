@@ -28,7 +28,7 @@ const generateUsername = async (firstName, existingUsernames) => {
 }
 
 export const signupAdmin = async (userDetails) => {
-  const { first_name, last_name, email, password } = userDetails;
+  const { first_name, last_name, email, mobile, password } = userDetails;
 
   try {
     const existingUsernames = await User.find({}, { username: 1, _id: 0});
@@ -36,7 +36,7 @@ export const signupAdmin = async (userDetails) => {
 
     const username = await generateUsername(first_name, existingUsernames);
 
-    User.create({ first_name, last_name, username, email, password, isAdmin: true });
+    User.create({ first_name, last_name, username, email, mobile, password, isAdmin: true });
 
     return Promise.resolve({username});
 
