@@ -6,15 +6,13 @@ export const registerUser = async (userDetails) => {
   const { first_name, last_name, email, mobile, password } = userDetails;
 
   try {
-    const existingUsernames = await User.find({}, { username: 1, _id: 0});
-    console.log(existingUsernames);
+    const existingUsernames = await User.find({}, { username: 1, _id: 0 });
 
     const username = await generateUsername(first_name, existingUsernames);
 
-    let user = await User.create({ first_name, last_name, username, email, mobile, password });
-    console.log(user);
+    let user = await User.create({ first_name, last_name, username, email, mobile, payment_mode, password });
 
-    return Promise.resolve({user});
+    return Promise.resolve({ user });
 
   } catch (error) {
     return Promise.reject(error);
@@ -35,7 +33,6 @@ export const loginUser = async (userDetails) => {
 
   try {
     let user = await User.findOne({ username });
-    console.log("user is present in database");
 
     if (!user) {
       return Promise.reject({ status: 400 });
@@ -43,7 +40,6 @@ export const loginUser = async (userDetails) => {
 
       try {
         await user.checkPassword(password);
-        console.log("Checkpassword executed");
 
         let jwt_payload = {
           id: user._id,
@@ -70,10 +66,7 @@ export const loginUser = async (userDetails) => {
 
 export const getAllUsers = async () => {
   try {
-    const users = await User.find({}, { password: 0, __v: 0 }).sort({first_name: 1}).exec();
-    console.log("This is before the users");
-    console.log(users);
-    console.log("This is after the users");
+    const users = await User.find({}, { password: 0, __v: 0 }).sort({ first_name: 1 }).exec();
     return Promise.resolve({ users });
   } catch (error) {
     return Promise.reject({ status: 500 });
@@ -84,9 +77,6 @@ export const getUser = async (id) => {
   try {
     const user = await User.findById(id, { password: 0, __v: 0 });
 
-    if (!user) {
-      return Promise.reject({ status: 400 });
-    }
     return Promise.resolve({ user });
   } catch (error) {
     return Promise.reject({status: 500});

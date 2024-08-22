@@ -24,6 +24,11 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  payment_mode: {
+    type: String,
+    default: "cash",
+    enum: ["cash", "annually"]
+  },
   password: {
     type: String,
     required: true

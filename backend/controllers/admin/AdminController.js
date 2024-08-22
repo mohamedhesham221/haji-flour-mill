@@ -7,7 +7,6 @@ export const signupAdmin = async (userDetails) => {
 
   try {
     const existingUsernames = await User.find({}, { username: 1, _id: 0});
-    console.log(existingUsernames);
 
     const username = await generateUsername(first_name, existingUsernames);
 
@@ -33,7 +32,6 @@ export const loginAdmin = async ({username, password}) => {
 
   try {
     let admin = await User.findOne({ username });
-    console.log("admin is present in database");
 
     if (!admin) {
       return Promise.reject({ status: 400 });
@@ -41,7 +39,6 @@ export const loginAdmin = async ({username, password}) => {
 
       try {
         await admin.checkPassword(password);
-        console.log("Checkpassword executed");
         if (!admin.isAdmin) {
           return Promise.reject({ status: 403 });
         }
