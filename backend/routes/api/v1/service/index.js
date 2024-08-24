@@ -1,13 +1,17 @@
 import { Router } from "express";
-
+import { authanticateAdmin } from "../../../../middlewares/authAdmin.js";
+import addService from "./add-service.js";
+import updateService from "./update-service.js";
+import deleteService from "./delete-service.js";
+import getAllServices from "./get-all-services.js";
 const router = Router();
 
-router.post("/add", (req, res) => { res.json({message: "Reached the /add route."}) });
+router.post("/add", authanticateAdmin, addService);
 
-router.post("/update/:id", (req, res) => { res.json({message: "Reached the /update/:id route."}) });
+router.put("/update/:id", authanticateAdmin, updateService);
 
-router.post("/delete/:id", (req, res) => { res.json({message: "Reached the /delete/:id route."}) });
+router.delete("/delete/:id", authanticateAdmin, deleteService);
 
-router.get("/all", (req, res) => { res.json({message: "Reached the /all route."}) });
+router.get("/all", getAllServices);
 
 export default router;
