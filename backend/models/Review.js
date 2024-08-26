@@ -1,12 +1,12 @@
 import { model, Schema } from "mongoose";
 
 const reviewSchema = new Schema({
-  user_id: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: "User",
     required: true
   },
-  service_id: {
+  service: {
     type: Schema.Types.ObjectId,
     ref: "Service",
     required: true
