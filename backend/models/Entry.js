@@ -1,14 +1,13 @@
 import { model, Schema } from "mongoose";
 
 const entrySchema = new Schema({
-  user_id: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+  user: {
+    type: String,
     required: true
   },
-  service_id: {
+  service: {
     type: Schema.Types.ObjectId,
-    ref: "Service",
+    ref: "service",
     required: true
   },
   weight: {
