@@ -1,14 +1,14 @@
 import { model, Schema } from "mongoose";
 
 const reviewSchema = new Schema({
-  user: {
+  user_id: {
     type: Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User",
     required: true
   },
-  service: {
+  service_id: {
     type: Schema.Types.ObjectId,
-    ref: "service",
+    ref: "Service",
     required: true
   },
   rating: {
@@ -26,6 +26,6 @@ const reviewSchema = new Schema({
   }
 });
 
-const Review = model("review", reviewSchema);
+const Review = model("Review", reviewSchema);
 
 export default Review;
