@@ -1,6 +1,6 @@
 import Entry from "../../models/Entry.js";
-import Service from "../../models/Service.js";
-import User from "../../models/User.js";
+// import Service from "../../models/Service.js";
+// import User from "../../models/User.js";
 
 export const addNewEntry = async (entryDetails) => {
   const { username, service_id, weight } = entryDetails;
