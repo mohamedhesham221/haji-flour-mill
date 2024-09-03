@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import passport from 'passport';
 import { customStrategies } from './passport.js';
+import cors from "cors";
 
 import adminRouter from "./routes/admin/index.js";
 import apiV1Router from "./routes/api/v1/index.js";
@@ -12,6 +13,7 @@ const app = express();
 const PORT = 3030;
 
 customStrategies(passport);
+app.use(cors({origin: "http://localhost:3000"}));
 app.use("/assets", express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

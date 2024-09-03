@@ -52,7 +52,7 @@ export const deleteService = async (id) => {
 export const getAllServices = async () => {
   try {
 
-    const services = await Service.find({}, { _id: 0, __v: 0 }).sort({name: 1});
+    const services = await Service.find({}, {__v: 0 }).sort({name: 1});
     return Promise.resolve({ services });
 
   } catch (error) {
