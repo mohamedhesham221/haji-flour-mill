@@ -1,5 +1,4 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import './AdminLayout.css';
 
 import Header from '../Header.js';
 import Footer from '../Footer.js';
