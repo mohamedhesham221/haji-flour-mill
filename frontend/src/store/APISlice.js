@@ -21,3 +21,33 @@ export const servicesApi = createApi({
 });
 
 export const { useGetAllServicesQuery } = servicesApi;
+
+export const userApi = createApi({
+  reducerPath: "userApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: baseUrl + "/users",
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "application/json");
+      headers.set("Accept", "application/json");
+      return headers;
+    }
+  }),
+  endpoints: (builder) => ({
+    loginUser: builder.mutation({
+      query: (credentials) => ({
+        url: "login",
+        method: "POST",
+        body: JSON.stringify(credentials)
+      })
+    }),
+    
+    // getAllUsers: builder.query({
+    //   query: () => "all",
+    //   providesTags: ["Users"]
+    // })
+
+  })
+})
+
+export const { useLoginUserMutation } = userApi;
+
