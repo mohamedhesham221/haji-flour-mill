@@ -29,6 +29,13 @@ export const userApi = createApi({
     prepareHeaders: (headers) => {
       headers.set("Content-Type", "application/json");
       headers.set("Accept", "application/json");
+
+      const token = localStorage.getItem("hajiFlourMillJWTToken");
+
+      if (token) {
+        headers.set("Authorization", token);
+      }
+
       return headers;
     }
   }),
@@ -37,9 +44,16 @@ export const userApi = createApi({
       query: (credentials) => ({
         url: "login",
         method: "POST",
-        body: JSON.stringify(credentials)
+        body: credentials
       })
     }),
+
+    initUser: builder.mutation({
+      query: () => ({
+        url: "verify",
+        method: "POST",
+      })
+    })
     
     // getAllUsers: builder.query({
     //   query: () => "all",
@@ -49,5 +63,5 @@ export const userApi = createApi({
   })
 })
 
-export const { useLoginUserMutation } = userApi;
+export const { useLoginUserMutation, useInitUserMutation } = userApi;
 

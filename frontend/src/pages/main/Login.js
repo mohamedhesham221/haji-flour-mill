@@ -23,7 +23,6 @@ const Login = () => {
     try {
 
       const { user, token } = await loginUser({ username, password }).unwrap();
-      window.localStorage.setItem("hajiFlourMillUser", JSON.stringify(user));
       window.localStorage.setItem("hajiFlourMillJWTToken", token);
       dispatch(setUser(user));
       navigate("/user");
