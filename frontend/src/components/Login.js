@@ -1,14 +1,16 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import "./styles/Login.css";
+import "./Login.css";
 
-import { useLoginUserMutation } from "../../store/APISlice";
-import { setUser } from "../../store/userSlice";
+import { useLoginUserMutation } from "../store/APISlice";
+import { setUser } from "../store/userSlice";
 
 
-const Login = () => {
+const Login = ({ navigateTo = "" }) => {
+  
+  const { user } = useSelector(state => state.user, shallowEqual);
 
   const [ username, setUsername ] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +18,10 @@ const Login = () => {
   const navigate = useNavigate();  
 
   const [loginUser, { isLoading, error }] = useLoginUserMutation();
+
+  useEffect(() => {
+    if (user) navigate(navigateTo, { replace: true });
+  }, [user])
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -25,7 +31,7 @@ const Login = () => {
       const { user, token } = await loginUser({ username, password }).unwrap();
       window.localStorage.setItem("hajiFlourMillJWTToken", token);
       dispatch(setUser(user));
-      navigate("/user", {replace: true});
+      navigate(navigateTo, {replace: true});
       
     } catch (error) {
       console.error(error);

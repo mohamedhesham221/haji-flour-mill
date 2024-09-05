@@ -9,7 +9,8 @@ import AdminLayout from "./components/layouts/AdminLayout.js";
 import Home from "./pages/main/Home.js";
 import Services from "./pages/main/Services.js";
 import Pricing from "./pages/main/Pricing.js";
-import Login from "./pages/main/Login.js";
+import LoginUser from "./pages/main/LoginUser.js";
+import LoginAdmin from "./pages/main/LoginAdmin.js";
 
 import Profile from "./pages/user/Profile.js";
 import Entries from "./pages/user/Entries.js";
@@ -33,7 +34,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />
+        element: <LoginUser />
+      },
+      {
+        path: "admin/login",
+        element: <LoginAdmin />
       }
     ]
   },
