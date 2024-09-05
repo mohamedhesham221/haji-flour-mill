@@ -70,3 +70,29 @@ export const userApi = createApi({
 
 export const { useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery } = userApi;
 
+export const entryApi = createApi({
+  reducerPath: "entryApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: baseUrl + "/entries",
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "application/json");
+      headers.set("Accept", "application/json");
+
+      const token = localStorage.getItem("hajiFlourMillJWTToken");
+
+      if (token) {
+        headers.set("Authorization", token);
+      }
+
+      return headers;
+    }
+  }),
+  endpoints: (builder) => ({
+    getUserEntries: builder.query({
+      query: (username) => `user/${username}`,
+      providesTags: ["UserEntries"]
+    })
+  })
+});
+
+export const { useGetUserEntriesQuery } = entryApi;

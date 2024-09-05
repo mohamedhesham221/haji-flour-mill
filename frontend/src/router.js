@@ -8,6 +8,7 @@ import Services from "./pages/main/Services.js";
 import Pricing from "./pages/main/Pricing.js";
 import Login from "./pages/main/Login.js";
 import Profile from "./pages/user/Profile.js";
+import Entries from "./pages/user/Entries.js";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />
+      },
+      {
+        path: "entries",
+        element: <Entries />
       }
       
     ]

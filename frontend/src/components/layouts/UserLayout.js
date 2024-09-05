@@ -13,7 +13,6 @@ const UserLayout = () => {
             <ul>
               <li><Link to="profile">Profile</Link></li>
               <li><Link to="entries">Get Entries</Link></li>
-              <li><Link to="entries-by-date">Get Entries by Date</Link></li>
             </ul>
           </nav>
         </aside>
