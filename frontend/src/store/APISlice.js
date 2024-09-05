@@ -21,3 +21,78 @@ export const servicesApi = createApi({
 });
 
 export const { useGetAllServicesQuery } = servicesApi;
+
+export const userApi = createApi({
+  reducerPath: "userApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: baseUrl + "/users",
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "application/json");
+      headers.set("Accept", "application/json");
+
+      const token = localStorage.getItem("hajiFlourMillJWTToken");
+
+      if (token) {
+        headers.set("Authorization", token);
+      }
+
+      return headers;
+    }
+  }),
+  endpoints: (builder) => ({
+    loginUser: builder.mutation({
+      query: (credentials) => ({
+        url: "login",
+        method: "POST",
+        body: credentials
+      })
+    }),
+
+    initUser: builder.mutation({
+      query: () => ({
+        url: "verify",
+        method: "POST",
+      })
+    }),
+
+    getUserById: builder.query({
+      query: (id) => `user/${id}`,
+      providesTags: ["User"]
+    })
+    
+    // getAllUsers: builder.query({
+    //   query: () => "all",
+    //   providesTags: ["Users"]
+    // })
+
+  })
+})
+
+export const { useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery } = userApi;
+
+export const entryApi = createApi({
+  reducerPath: "entryApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: baseUrl + "/entries",
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "application/json");
+      headers.set("Accept", "application/json");
+
+      const token = localStorage.getItem("hajiFlourMillJWTToken");
+
+      if (token) {
+        headers.set("Authorization", token);
+      }
+
+      return headers;
+    }
+  }),
+  endpoints: (builder) => ({
+    getUserEntries: builder.query({
+      query: (username) => `user/${username}`,
+      providesTags: ["UserEntries"]
+    })
+  })
+});
+
+export const { useGetUserEntriesQuery } = entryApi;

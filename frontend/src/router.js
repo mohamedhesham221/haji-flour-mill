@@ -1,11 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import Protected from "./components/Protected.js";
+
 import MainLayout from "./components/layouts/MainLayout.js";
 import UserLayout from "./components/layouts/UserLayout.js";
 import AdminLayout from "./components/layouts/AdminLayout.js";
-import Home from "./pages/Home.js";
-import Services from "./pages/Services.js";
-import Pricing from "./pages/Pricing.js";
+
+import Home from "./pages/main/Home.js";
+import Services from "./pages/main/Services.js";
+import Pricing from "./pages/main/Pricing.js";
+import Login from "./pages/main/Login.js";
+
+import Profile from "./pages/user/Profile.js";
+import Entries from "./pages/user/Entries.js";
 
 export const router = createBrowserRouter([
   {
@@ -23,12 +30,36 @@ export const router = createBrowserRouter([
       {
         path: "pricing",
         element: <Pricing />
+      },
+      {
+        path: "login",
+        element: <Login />
       }
     ]
   },
   {
     path: "user",
-    element: <UserLayout />
+    element: <Protected />,
+    children: [
+      {
+        path: "",
+        element: <UserLayout />,
+        children: [
+          {
+            index: true,
+            element: <Profile />
+          },
+          {
+            path: "profile",
+            element: <Profile />
+          },
+          {
+            path: "entries",
+            element: <Entries />
+          }
+        ]
+      }
+    ]
   },
   {
     path: "admin",
