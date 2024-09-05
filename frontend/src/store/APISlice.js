@@ -53,6 +53,11 @@ export const userApi = createApi({
         url: "verify",
         method: "POST",
       })
+    }),
+
+    getUserById: builder.query({
+      query: (id) => `user/${id}`,
+      providesTags: ["User"]
     })
     
     // getAllUsers: builder.query({
@@ -63,5 +68,5 @@ export const userApi = createApi({
   })
 })
 
-export const { useLoginUserMutation, useInitUserMutation } = userApi;
+export const { useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery } = userApi;
 

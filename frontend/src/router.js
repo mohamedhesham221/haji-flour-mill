@@ -7,6 +7,7 @@ import Home from "./pages/main/Home.js";
 import Services from "./pages/main/Services.js";
 import Pricing from "./pages/main/Pricing.js";
 import Login from "./pages/main/Login.js";
+import Profile from "./pages/user/Profile.js";
 
 export const router = createBrowserRouter([
   {
@@ -33,7 +34,18 @@ export const router = createBrowserRouter([
   },
   {
     path: "user",
-    element: <UserLayout />
+    element: <UserLayout />,
+    children: [
+      {
+        index: true,
+        element: <Profile />
+      },
+      {
+        path: "profile",
+        element: <Profile />
+      }
+      
+    ]
   },
   {
     path: "admin",
