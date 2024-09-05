@@ -25,7 +25,7 @@ const Login = () => {
       const { user, token } = await loginUser({ username, password }).unwrap();
       window.localStorage.setItem("hajiFlourMillJWTToken", token);
       dispatch(setUser(user));
-      navigate("/user");
+      navigate("/user", {replace: true});
       
     } catch (error) {
       console.error(error);

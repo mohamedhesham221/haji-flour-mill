@@ -14,8 +14,6 @@ const Entries = () => {
     return <p className="query-error">An error has occured!</p>;
   }
 
-  console.log("Data: ", data);
-
   const { entries } = data;
 
   return (
