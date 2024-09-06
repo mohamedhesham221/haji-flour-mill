@@ -64,7 +64,7 @@ export const userApi = createApi({
       })
     }),
 
-    getUserById: builder.query({
+    getUser: builder.query({
       query: (id) => `user/${id}`,
       providesTags: ["User"]
     }),
@@ -77,7 +77,7 @@ export const userApi = createApi({
   })
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery, useGetAllUsersQuery } = userApi;
+export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserQuery, useGetAllUsersQuery } = userApi;
 
 export const entryApi = createApi({
   reducerPath: "entryApi",

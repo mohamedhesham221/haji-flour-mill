@@ -1,3 +1,5 @@
+import "./styles/UserEntries.css";
+
 import { useGetUserEntriesQuery } from "../../store/APISlice";
 
 import EntriesComponent from "../../components/EntriesComponent";
@@ -11,7 +13,7 @@ const UserEntries = () => {
   const [skip, setSkip] = useState(true);
   const usernameRef = useRef();
 
-  const { data, isFetching: isSubmitting, isError, error } = useGetUserEntriesQuery(username, {skip});
+  const { data, isLoading, isError, error } = useGetUserEntriesQuery(username, {skip});
   
   if (isError) {
     console.error("Error: ", error);
@@ -28,21 +30,20 @@ const UserEntries = () => {
   }
 
   return (
-    <div>
-      <form className="user-entry-form" onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label htmlFor="username">Username</label>
-          <input 
-            type="text" 
-            id="username" 
+    <div >
+      <div className="entry-search-container">
+        <h1>Search User Entries</h1>
+        <form onSubmit={handleSubmit} className="entry-search-form">
+          <input
+            className="username-input"
+            type="text"
+            placeholder="Enter username"
             ref={usernameRef}
             required
           />
-        </div>
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Getting entries..." : "Get Entries"}
-        </button>
-      </form>
+          <button type="submit" className="submit-button" disabled={isLoading}>{ isLoading ? "Getting Entries..." : "Get Entries" }</button>
+        </form>
+      </div>
       {entries &&
         <EntriesComponent entries={entries} username={username} />
       }

@@ -73,10 +73,16 @@ export const getAllUsers = async () => {
   }
 }
 
-export const getUser = async (id) => {
+export const getUser = async (identifier) => {
   try {
-    const user = await User.findById(id, { password: 0, __v: 0 });
 
+    let user;
+    const isObjectId = identifier.match(/^[0-9a-fA-F]{24}$/);
+
+    isObjectId
+      ? user = await User.findById(identifier, {      password: 0, __v: 0 })
+      : user = await User.findOne({ username: identifier }, { password: 0, __v: 0 });
+    
     return Promise.resolve({ user });
   } catch (error) {
     return Promise.reject({status: 500});

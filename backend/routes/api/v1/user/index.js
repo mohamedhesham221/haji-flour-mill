@@ -17,6 +17,6 @@ router.post("/verify", passport.authenticate("jwt", { session: false }), verifyU
 
 router.get("/all", authanticateAdmin, getAllUsers);
 
-router.get("/user/:id", passport.authenticate("jwt", { session: false }), getUser);
+router.get("/user/:identifier", passport.authenticate("jwt", { session: false }), getUser);
 
 export default router
