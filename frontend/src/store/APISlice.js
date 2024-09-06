@@ -88,6 +88,16 @@ export const entryApi = createApi({
     }
   }),
   endpoints: (builder) => ({
+
+    addNewEntry: builder.mutation({
+      query: (entryDetails) => ({
+        url: "new",
+        method: "POST",
+        body: entryDetails
+      }),
+      invalidatesTags: ["UserEntries", "Entries"]
+    }),
+
     getUserEntries: builder.query({
       query: (username) => `user/${username}`,
       providesTags: ["UserEntries"]
@@ -95,4 +105,4 @@ export const entryApi = createApi({
   })
 });
 
-export const { useGetUserEntriesQuery } = entryApi;
+export const { useAddNewEntryMutation, useGetUserEntriesQuery } = entryApi;

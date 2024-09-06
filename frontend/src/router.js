@@ -15,6 +15,8 @@ import LoginAdmin from "./pages/main/LoginAdmin.js";
 import Profile from "./pages/user/Profile.js";
 import Entries from "./pages/user/Entries.js";
 
+import NewEntry from "./pages/admin/NewEntry.js";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -68,7 +70,13 @@ export const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: <AdminLayout />
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <NewEntry />
+      }
+    ]
   },
   {
     path: "*",
