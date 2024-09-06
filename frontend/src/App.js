@@ -1,7 +1,7 @@
 import "./App.css"
 
 import { RouterProvider } from "react-router-dom";
-import { router } from "./router.js";
+import { router } from "./routes/router.js";
 import {  useDispatch } from "react-redux";
 
 import { useInitUserMutation } from "./store/APISlice.js";
