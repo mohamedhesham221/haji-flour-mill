@@ -21,7 +21,6 @@ const AdminLayout = () => {
                 <li><Link to="new-entry">New Entry</Link></li>
                 <li><Link to="all-entries">Get All Entries</Link></li>
                 <li><Link to="user-entries">Get Entries of User</Link></li>
-                <li><Link to="date-entries">Get Entries by Date</Link></li>
               </ul>
             </div>
             <div className="section">
