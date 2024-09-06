@@ -1,13 +1,10 @@
-import "./styles/Entries.css";
+import "./styles/AllEntries.css";
 
-import { useSelector, shallowEqual } from "react-redux";
-import { useGetUserEntriesQuery } from "../../store/APISlice";
+import { useGetAllEntriesQuery } from "../../store/APISlice";
 
-const Entries = () => {
+const AllEntries = () => {
 
-  const { user: loggedInUser } = useSelector(state => state.user, shallowEqual);
-
-  const { data, isLoading, isError, error } = useGetUserEntriesQuery(loggedInUser?.username);
+  const { data, isLoading, isError, error } = useGetAllEntriesQuery();
 
   if (isLoading) return <p className="query-loading">Loading...</p>
   
@@ -19,9 +16,9 @@ const Entries = () => {
   const { entries } = data;
 
   return (
-    <div className="entries-page">
-      <h2>Entries for {loggedInUser?.username}</h2>
-      {entries.length > 0
+    <div className="entries-page all-entries">
+      <h2>All Entries</h2>
+      {entries?.length > 0
         ? <table className="entries-table">
             <thead>
               <tr>
@@ -34,7 +31,7 @@ const Entries = () => {
             </thead>
             <tbody>
               {entries?.map((entry) => (
-                <tr key={entry._id} >
+                <tr key={entry._id}>
                   <td>{entry.user}</td>
                   <td>{entry.weight}</td>
                   <td>{entry.amount}</td>
@@ -50,4 +47,4 @@ const Entries = () => {
   );
 };
 
-export default Entries;
+export default AllEntries;

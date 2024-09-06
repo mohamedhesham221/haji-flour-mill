@@ -95,7 +95,12 @@ export const entryApi = createApi({
         method: "POST",
         body: entryDetails
       }),
-      invalidatesTags: ["UserEntries", "Entries"]
+      invalidatesTags: ["UserEntries", "AllEntries"]
+    }),
+
+    getAllEntries: builder.query({
+      query: () => "all",
+      providesTags: ["AllEntries"]
     }),
 
     getUserEntries: builder.query({
@@ -105,4 +110,4 @@ export const entryApi = createApi({
   })
 });
 
-export const { useAddNewEntryMutation, useGetUserEntriesQuery } = entryApi;
+export const { useAddNewEntryMutation, useGetUserEntriesQuery, useGetAllEntriesQuery } = entryApi;
