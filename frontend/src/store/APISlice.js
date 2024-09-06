@@ -40,6 +40,15 @@ export const userApi = createApi({
     }
   }),
   endpoints: (builder) => ({
+
+    registerUser: builder.mutation({
+      query: (userdetails) => ({
+        url: "register",
+        method: "POST",
+        body: userdetails
+      })
+    }),
+
     loginUser: builder.mutation({
       query: (credentials) => ({
         url: "login",
@@ -68,7 +77,7 @@ export const userApi = createApi({
   })
 })
 
-export const { useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery } = userApi;
+export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery } = userApi;
 
 export const entryApi = createApi({
   reducerPath: "entryApi",

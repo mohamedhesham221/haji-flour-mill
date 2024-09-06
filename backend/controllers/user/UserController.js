@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 import { generateUsername } from "../../services/generate-username.js";
 
 export const registerUser = async (userDetails) => {
-  const { first_name, last_name, email, mobile, password } = userDetails;
+  const { first_name, last_name, email, mobile, payment_mode, password } = userDetails;
 
   try {
     const existingUsernames = await User.find({}, { username: 1, _id: 0 });

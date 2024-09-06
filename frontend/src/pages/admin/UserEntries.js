@@ -29,7 +29,7 @@ const UserEntries = () => {
 
   return (
     <div>
-      <form className="new-entry-form" onSubmit={handleSubmit}>
+      <form className="user-entry-form" onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="username">Username</label>
           <input 
