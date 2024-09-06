@@ -4,6 +4,7 @@ import NewEntry from "../pages/admin/NewEntry.js";
 import AllEntries from "../pages/admin/AllEntries.js";
 import UserEntries from "../pages/admin/UserEntries.js";
 import NewUser from "../pages/admin/NewUser.js";
+import AllUsers from "../pages/admin/AllUsers.js";
 
 const adminRoutes = {
   path: "admin",
@@ -28,6 +29,10 @@ const adminRoutes = {
     {
       path: "new-user",
       element: <NewUser />
+    },
+    {
+      path: "all-users",
+      element: <AllUsers />
     }
   ],
 };

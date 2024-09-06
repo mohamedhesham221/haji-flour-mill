@@ -67,17 +67,17 @@ export const userApi = createApi({
     getUserById: builder.query({
       query: (id) => `user/${id}`,
       providesTags: ["User"]
-    })
+    }),
     
-    // getAllUsers: builder.query({
-    //   query: () => "all",
-    //   providesTags: ["Users"]
-    // })
+    getAllUsers: builder.query({
+      query: () => "all",
+      providesTags: ["Users"]
+    })
 
   })
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery } = userApi;
+export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery, useGetAllUsersQuery } = userApi;
 
 export const entryApi = createApi({
   reducerPath: "entryApi",
