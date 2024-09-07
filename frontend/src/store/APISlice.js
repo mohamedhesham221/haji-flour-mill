@@ -9,10 +9,25 @@ export const servicesApi = createApi({
     prepareHeaders: (headers) => {
       headers.set("Content-Type", "application/json");
       headers.set("Accept", "application/json");
+
+      const token = window.localStorage.getItem("hajiFlourMillJWTToken");
+
+      if (token) headers.set("Authorization", token);
+
       return headers;
     }
   }),
   endpoints: (builder) => ({
+
+    addService: builder.mutation({
+      query: (newservice) => ({
+        url: "/add",
+        method: "POST",
+        body: newservice
+      }),
+      invalidatesTags: ["Services"]
+    }),
+    
     getAllServices: builder.query({
       query: () => "all",
       providesTags: ["Services"]
@@ -20,7 +35,7 @@ export const servicesApi = createApi({
   })
 });
 
-export const { useGetAllServicesQuery } = servicesApi;
+export const { useAddServiceMutation, useGetAllServicesQuery } = servicesApi;
 
 export const userApi = createApi({
   reducerPath: "userApi",
@@ -46,7 +61,8 @@ export const userApi = createApi({
         url: "register",
         method: "POST",
         body: userdetails
-      })
+      }),
+      invalidatesTags: ["User", "Users"]
     }),
 
     loginUser: builder.mutation({

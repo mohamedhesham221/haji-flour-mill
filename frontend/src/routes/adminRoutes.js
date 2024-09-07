@@ -6,6 +6,7 @@ import UserEntries from "../pages/admin/UserEntries.js";
 import NewUser from "../pages/admin/NewUser.js";
 import AllUsers from "../pages/admin/AllUsers.js";
 import UserDetails from "../pages/admin/UserDetails.js";
+import AddService from "../pages/admin/AddService.js";
 
 const adminRoutes = {
   path: "admin",
@@ -38,6 +39,10 @@ const adminRoutes = {
     {
       path: "user-details",
       element: <UserDetails />
+    },
+    {
+      path: "add-service",
+      element: <AddService />
     }
   ],
 };
