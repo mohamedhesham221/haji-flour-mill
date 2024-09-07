@@ -8,6 +8,7 @@ import AllUsers from "../pages/admin/AllUsers.js";
 import UserDetails from "../pages/admin/UserDetails.js";
 import AddService from "../pages/admin/AddService.js";
 import AllServices from "../pages/admin/AllServices.js";
+import UpdateService from "../pages/admin/UpdateService.js";
 
 const adminRoutes = {
   path: "admin",
@@ -48,6 +49,10 @@ const adminRoutes = {
     {
       path: "all-services",
       element: <AllServices />
+    },
+    {
+      path: "edit-service/:id",
+      element: <UpdateService />
     }
   ],
 };

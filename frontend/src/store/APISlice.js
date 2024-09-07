@@ -29,7 +29,7 @@ export const servicesApi = createApi({
     }),
 
     updateService: builder.mutation({
-      query: (id, updatedServiceDetails) => ({
+      query: ({id, updatedServiceDetails}) => ({
         url: `update/${id}`,
         method: "PUT",
         body: updatedServiceDetails
