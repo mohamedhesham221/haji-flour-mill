@@ -9,11 +9,10 @@ const UserEntries = () => {
 
   console.log("Rendering the UserEntries page.");
 
-  const [username, setUsername] = useState("");
-  const [skip, setSkip] = useState(true);
+  const [username, setUsername] = useState(null);
   const usernameRef = useRef();
 
-  const { data, isLoading, isError, error } = useGetUserEntriesQuery(username, {skip});
+  const { data, isLoading, isError, error } = useGetUserEntriesQuery(username, {skip: !username});
   
   if (isError) {
     console.error("Error: ", error);
@@ -25,7 +24,7 @@ const UserEntries = () => {
     e.preventDefault();
 
     setUsername(usernameRef.current.value);
-    setSkip(false);
+    usernameRef.current.value = "";
 
   }
 
