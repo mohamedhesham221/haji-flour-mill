@@ -27,7 +27,7 @@ const mainRoutes = {
       element: <LoginUser />,
     },
     {
-      path: "admin/login",
+      path: "login-admin",
       element: <LoginAdmin />,
     },
   ],

@@ -2,8 +2,36 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseUrl = "http://localhost:3030/api/v1";
 
-export const servicesApi = createApi({
-  reducerPath: "hfmApi",
+export const adminApi = createApi({
+  reducerPath: "adminApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:3030/admin",
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "application/json");
+      headers.set("Accept", "application/json");
+
+      const token = window.localStorage.getItem("hajiFlourMillJWTToken");
+
+      if (token) headers.set("Authorization", token);
+
+      return headers;
+    }
+  }),
+  endpoints: (builder) => ({
+    loginAdmin: builder.mutation({
+      query: (credentials) => ({
+        url: "login",
+        method: "POST",
+        body: credentials
+      })
+    })
+  })
+});
+
+export const { useLoginAdminMutation } = adminApi;
+
+export const serviceApi = createApi({
+  reducerPath: "serviceApi",
   baseQuery: fetchBaseQuery({
     baseUrl: baseUrl + "/services",
     prepareHeaders: (headers) => {
@@ -52,7 +80,7 @@ export const servicesApi = createApi({
   })
 });
 
-export const { useAddServiceMutation, useUpdateServiceMutation, useDeleteServiceMutation, useGetAllServicesQuery } = servicesApi;
+export const { useAddServiceMutation, useUpdateServiceMutation, useDeleteServiceMutation, useGetAllServicesQuery } = serviceApi;
 
 export const userApi = createApi({
   reducerPath: "userApi",
