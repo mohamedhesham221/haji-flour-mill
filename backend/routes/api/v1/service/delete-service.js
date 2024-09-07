@@ -7,6 +7,9 @@ export default async (req, res) => {
     const { message } = await deleteService(id);
     res.status(200).json({ message });
   } catch (error) {
-    res.status(error.status).json({ ...error, message: "Server error" });
+    error.status === 400
+      ? error.message = "Service not found."
+      : error.message = "Server error"
+    res.status(error.status).json({ error });
   }
 }

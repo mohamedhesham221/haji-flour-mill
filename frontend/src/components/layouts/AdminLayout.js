@@ -36,14 +36,12 @@ const AdminLayout = () => {
               <ul>
                 <li><Link to="add-service">Add Service</Link></li>
                 <li><Link to="all-services">Get All Services</Link></li>
-                <li><Link to="edit-service">Edit Service</Link></li>
-                <li><Link to="delete-service">Delete Service</Link></li>
               </ul>
             </div>
           </nav>
         </aside>
         <main className="content admin-content">
-          <Outlet /> {/* This will render the pages/components matching the current route */}
+          <Outlet />
         </main>
       </div>
       <Footer />

@@ -12,7 +12,7 @@ const NewUser = () => {
     password: ""
   });
 
-  const [registerUser, { isLoading, isError, isSuccess, error }] = useRegisterUserMutation();
+  const [registerUser, { isLoading, isError, error }] = useRegisterUserMutation();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

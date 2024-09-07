@@ -7,6 +7,7 @@ import NewUser from "../pages/admin/NewUser.js";
 import AllUsers from "../pages/admin/AllUsers.js";
 import UserDetails from "../pages/admin/UserDetails.js";
 import AddService from "../pages/admin/AddService.js";
+import AllServices from "../pages/admin/AllServices.js";
 
 const adminRoutes = {
   path: "admin",
@@ -43,6 +44,10 @@ const adminRoutes = {
     {
       path: "add-service",
       element: <AddService />
+    },
+    {
+      path: "all-services",
+      element: <AllServices />
     }
   ],
 };

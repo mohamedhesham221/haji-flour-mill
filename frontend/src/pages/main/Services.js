@@ -10,8 +10,7 @@ const Services = () => {
     return <p className="query-error">An error has occured!</p>;
   }
 
-  let services = [];
-  if (data) services = data.services;
+  const services = data?.services
 
   return (
     <div className="services">
