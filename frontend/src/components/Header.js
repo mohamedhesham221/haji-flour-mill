@@ -8,7 +8,7 @@ const Header = ({ linkItems = [], logoutButton = false }) => {
 
   const dispatch = useDispatch();
   
-  const handleClick = (e) => {
+  const handleLogout = (e) => {
     e.preventDefault();
 
     window.localStorage.removeItem("hajiFlourMillJWTToken");
@@ -42,7 +42,7 @@ const Header = ({ linkItems = [], logoutButton = false }) => {
               <Link to="/login">Login User</Link>
               <Link to="/login-admin">Login Admin</Link>
             </>
-          : <a href="#" onClick={handleClick}>Logout</a>
+          : <a href="#" onClick={handleLogout}>Logout</a>
         }
       </div>
     </header>

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRegisterUserMutation } from "../../store/APISlice";
 import './styles/NewUser.css';
 
 const NewUser = () => {
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -12,7 +13,13 @@ const NewUser = () => {
     password: ""
   });
 
-  const [registerUser, { isLoading, isError, error }] = useRegisterUserMutation();
+  const [registerUser, { isLoading, isError, error, data }] = useRegisterUserMutation();
+
+  useEffect(() => {
+    if (data) {
+      alert(`User "${data.user.username}" created successfully.`)
+    }
+  }, [data]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +34,6 @@ const NewUser = () => {
     console.log("Form data: ", formData);
     try {
       await registerUser(formData).unwrap();
-      alert("User created successfully!");
       setFormData({
         first_name: "",
         last_name: "",

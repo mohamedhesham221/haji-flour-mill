@@ -1,6 +1,6 @@
 import "./styles/NewEntry.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useGetAllServicesQuery } from "../../store/APISlice";
 import { useAddNewEntryMutation } from "../../store/APISlice";
@@ -11,14 +11,17 @@ const NewEntry = () => {
   const [selectedService, setSelectedService] = useState("");
   
   const { data, isLoading, isError, error } = useGetAllServicesQuery();
-  const [addNewEntry, { isLoading: isSubmitting }] = useAddNewEntryMutation();
+  const [addNewEntry, { isLoading: isSubmitting, data: entryData }] = useAddNewEntryMutation();
+
+  useEffect(() => {
+    if (entryData) alert(`Entry with amount INR ${entryData.entry.amount} added successfully.`);
+  }, [entryData])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       await addNewEntry({ username, serviceId: selectedService, weight }).unwrap();
-      alert("Entry added successfully");
       setUsername("");
       setSelectedService("");
       setWeight("");

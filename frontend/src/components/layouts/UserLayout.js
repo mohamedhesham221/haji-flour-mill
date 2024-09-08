@@ -12,7 +12,7 @@ const UserLayout = () => {
           <nav>
             <ul>
               <li><Link to="profile">Profile</Link></li>
-              <li><Link to="entries">Get Entries</Link></li>
+              <li><Link to="entries">My Entries</Link></li>
             </ul>
           </nav>
         </aside>
