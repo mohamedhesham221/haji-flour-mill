@@ -1,7 +1,9 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useSelector, shallowEqual } from 'react-redux';
 
 import Header from '../Header.js';
 import Footer from '../Footer.js';
+import { useEffect } from 'react';
 
 const linkItems = [
   {
@@ -23,6 +25,15 @@ const linkItems = [
 ]
 
 const MainLayout = () => {
+
+  const navigate = useNavigate();
+
+  const { user: loggedInUser } = useSelector(state => state.user, shallowEqual);
+
+  useEffect(() => {
+    if (loggedInUser) navigate(loggedInUser.isAdmin ? "/admin" : "/user", {replace: true});
+  }, [loggedInUser]);
+
   return (
     <div className="top-container main-layout-container">
       <Header linkItems={ linkItems } />

@@ -1,8 +1,21 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/userSlice";
+
 const Header = ({ linkItems = [], logoutButton = false }) => {
+
+  const dispatch = useDispatch();
   
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    window.localStorage.removeItem("hajiFlourMillJWTToken");
+    dispatch(setUser(null));
+
+  }
+
   return (
     <header className="header">
       <nav className="navbar">
@@ -27,9 +40,9 @@ const Header = ({ linkItems = [], logoutButton = false }) => {
         {!logoutButton 
           ? <>
               <Link to="/login">Login User</Link>
-              <Link to="/admin/login">Login Admin</Link>
+              <Link to="/login-admin">Login Admin</Link>
             </>
-          : <a href="#">Logout</a>
+          : <a href="#" onClick={handleClick}>Logout</a>
         }
       </div>
     </header>

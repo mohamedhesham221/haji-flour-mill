@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import "./styles/Login.css";
+import "./Login.css";
 
-import { useLoginUserMutation } from "../../store/APISlice";
-import { setUser } from "../../store/userSlice";
+import { useLoginAdminMutation, useLoginUserMutation } from "../store/APISlice";
+import { setUser } from "../store/userSlice";
 
 
-const Login = () => {
+const Login = ({ navigateTo = "", admin = false }) => {
 
   const [ username, setUsername ] = useState("");
   const [password, setPassword] = useState("");
@@ -16,16 +16,21 @@ const Login = () => {
   const navigate = useNavigate();  
 
   const [loginUser, { isLoading, error }] = useLoginUserMutation();
+  const [loginAdmin, { isLoading: adminLoading, error: adminError}] = useLoginAdminMutation();
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
+      let user, token;
 
-      const { user, token } = await loginUser({ username, password }).unwrap();
+      admin 
+        ? { user, token } = await loginAdmin({ username, password }).unwrap()
+        : { user, token } = await loginUser({ username, password }).unwrap();
+      
       window.localStorage.setItem("hajiFlourMillJWTToken", token);
       dispatch(setUser(user));
-      navigate("/user", {replace: true});
+      navigate(navigateTo, {replace: true});
       
     } catch (error) {
       console.error(error);
@@ -62,18 +67,25 @@ const Login = () => {
               required
             />
           </div>
-          <button className="login-button" type="submit" disabled={isLoading}>
-            {isLoading ? 'Logging in...' : 'Login'}
+          <button className="login-button" type="submit" disabled={isLoading || adminLoading}>
+            {isLoading || adminLoading ? 'Logging in...' : 'Login'}
           </button>
         </form>
       </div>
 
-      {error && 
+      {(error || adminError) && 
         <div className="query-error login-error">
           {
-            error.status === 400
+            error?.status === 400
               ? <p>Incorrect username or password!</p>
               : <p>Can not proceed, Server error!</p>
+          }
+          {
+            adminError?.status === 400
+              ? <p>Incorrect username or password!</p>
+              : adminError?.status === 403
+                ? <p>Access forbidden!</p>
+                : <p> Can not proceed, Server error!</p>
           }
         </div>
       }

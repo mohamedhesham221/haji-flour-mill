@@ -39,7 +39,7 @@ export const deleteService = async (id) => {
 
     if (!deletedService) {
       console.log(`Service with id ${id} not found.`);
-      return Promise.reject({ status: 500 });
+      return Promise.reject({ status: 400 });
     }
 
     return Promise.resolve({ message: "Service deleted successfully." });

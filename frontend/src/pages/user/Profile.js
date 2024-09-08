@@ -1,11 +1,11 @@
 import { useSelector, shallowEqual } from "react-redux"
-import { useGetUserByIdQuery } from "../../store/APISlice";
+import { useGetUserQuery } from "../../store/APISlice";
 
 const Profile = () => {
 
   const { user: loggedInUser } = useSelector((state) => state.user, shallowEqual);
 
-  const { data, isLoading, isError, error } = useGetUserByIdQuery(loggedInUser?.id);
+  const { data, isLoading, isError, error } = useGetUserQuery(loggedInUser?.id);
 
   if (isLoading) return <p className="query-loading">Loading...</p>
   

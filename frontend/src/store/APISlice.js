@@ -2,17 +2,77 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseUrl = "http://localhost:3030/api/v1";
 
-export const servicesApi = createApi({
-  reducerPath: "hfmApi",
+export const adminApi = createApi({
+  reducerPath: "adminApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:3030/admin",
+    prepareHeaders: (headers) => {
+      headers.set("Content-Type", "application/json");
+      headers.set("Accept", "application/json");
+
+      const token = window.localStorage.getItem("hajiFlourMillJWTToken");
+
+      if (token) headers.set("Authorization", token);
+
+      return headers;
+    }
+  }),
+  endpoints: (builder) => ({
+    loginAdmin: builder.mutation({
+      query: (credentials) => ({
+        url: "login",
+        method: "POST",
+        body: credentials
+      })
+    })
+  })
+});
+
+export const { useLoginAdminMutation } = adminApi;
+
+export const serviceApi = createApi({
+  reducerPath: "serviceApi",
   baseQuery: fetchBaseQuery({
     baseUrl: baseUrl + "/services",
     prepareHeaders: (headers) => {
       headers.set("Content-Type", "application/json");
       headers.set("Accept", "application/json");
+
+      const token = window.localStorage.getItem("hajiFlourMillJWTToken");
+
+      if (token) headers.set("Authorization", token);
+
       return headers;
     }
   }),
   endpoints: (builder) => ({
+
+    addService: builder.mutation({
+      query: (newservice) => ({
+        url: "/add",
+        method: "POST",
+        body: newservice
+      }),
+      invalidatesTags: ["Services"]
+    }),
+
+    updateService: builder.mutation({
+      query: ({id, updatedServiceDetails}) => ({
+        url: `update/${id}`,
+        method: "PUT",
+        body: updatedServiceDetails
+      }),
+      invalidatesTags: ["Services"]
+    }),
+
+    deleteService: builder.mutation({
+      query: (id) => ({
+        url: `delete/${id}`,
+        method: "DELETE"
+      }),
+      invalidatesTags: ["Services"]
+    }),
+    
     getAllServices: builder.query({
       query: () => "all",
       providesTags: ["Services"]
@@ -20,7 +80,7 @@ export const servicesApi = createApi({
   })
 });
 
-export const { useGetAllServicesQuery } = servicesApi;
+export const { useAddServiceMutation, useUpdateServiceMutation, useDeleteServiceMutation, useGetAllServicesQuery } = serviceApi;
 
 export const userApi = createApi({
   reducerPath: "userApi",
@@ -40,6 +100,16 @@ export const userApi = createApi({
     }
   }),
   endpoints: (builder) => ({
+
+    registerUser: builder.mutation({
+      query: (userdetails) => ({
+        url: "register",
+        method: "POST",
+        body: userdetails
+      }),
+      invalidatesTags: ["User", "Users"]
+    }),
+
     loginUser: builder.mutation({
       query: (credentials) => ({
         url: "login",
@@ -55,20 +125,20 @@ export const userApi = createApi({
       })
     }),
 
-    getUserById: builder.query({
+    getUser: builder.query({
       query: (id) => `user/${id}`,
       providesTags: ["User"]
-    })
+    }),
     
-    // getAllUsers: builder.query({
-    //   query: () => "all",
-    //   providesTags: ["Users"]
-    // })
+    getAllUsers: builder.query({
+      query: () => "all",
+      providesTags: ["Users"]
+    })
 
   })
 })
 
-export const { useLoginUserMutation, useInitUserMutation, useGetUserByIdQuery } = userApi;
+export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserQuery, useGetAllUsersQuery } = userApi;
 
 export const entryApi = createApi({
   reducerPath: "entryApi",
@@ -88,6 +158,21 @@ export const entryApi = createApi({
     }
   }),
   endpoints: (builder) => ({
+
+    addNewEntry: builder.mutation({
+      query: (entryDetails) => ({
+        url: "new",
+        method: "POST",
+        body: entryDetails
+      }),
+      invalidatesTags: ["UserEntries", "AllEntries"]
+    }),
+
+    getAllEntries: builder.query({
+      query: () => "all",
+      providesTags: ["AllEntries"]
+    }),
+
     getUserEntries: builder.query({
       query: (username) => `user/${username}`,
       providesTags: ["UserEntries"]
@@ -95,4 +180,4 @@ export const entryApi = createApi({
   })
 });
 
-export const { useGetUserEntriesQuery } = entryApi;
+export const { useAddNewEntryMutation, useGetUserEntriesQuery, useGetAllEntriesQuery } = entryApi;
