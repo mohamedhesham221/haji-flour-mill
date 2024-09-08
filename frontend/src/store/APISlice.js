@@ -1,11 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseUrl = "/api/v1";
+const apiBaseUrl = "/api/v1";
 
-export const adminApi = createApi({
-  reducerPath: "adminApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "/admin",
+const getBaseQuery = (rootUrl, subUrl) => {
+  return fetchBaseQuery({
+    baseUrl: rootUrl + subUrl,
     prepareHeaders: (headers) => {
       headers.set("Content-Type", "application/json");
       headers.set("Accept", "application/json");
@@ -16,7 +15,12 @@ export const adminApi = createApi({
 
       return headers;
     }
-  }),
+  })
+}
+
+export const adminApi = createApi({
+  reducerPath: "adminApi",
+  baseQuery: getBaseQuery("", "/admin"),
   endpoints: (builder) => ({
     loginAdmin: builder.mutation({
       query: (credentials) => ({
@@ -30,21 +34,11 @@ export const adminApi = createApi({
 
 export const { useLoginAdminMutation } = adminApi;
 
+
+
 export const serviceApi = createApi({
   reducerPath: "serviceApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: baseUrl + "/services",
-    prepareHeaders: (headers) => {
-      headers.set("Content-Type", "application/json");
-      headers.set("Accept", "application/json");
-
-      const token = window.localStorage.getItem("hajiFlourMillJWTToken");
-
-      if (token) headers.set("Authorization", token);
-
-      return headers;
-    }
-  }),
+  baseQuery: getBaseQuery(apiBaseUrl, "/services"),
   endpoints: (builder) => ({
 
     addService: builder.mutation({
@@ -82,23 +76,11 @@ export const serviceApi = createApi({
 
 export const { useAddServiceMutation, useUpdateServiceMutation, useDeleteServiceMutation, useGetAllServicesQuery } = serviceApi;
 
+
+
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: baseUrl + "/users",
-    prepareHeaders: (headers) => {
-      headers.set("Content-Type", "application/json");
-      headers.set("Accept", "application/json");
-
-      const token = localStorage.getItem("hajiFlourMillJWTToken");
-
-      if (token) {
-        headers.set("Authorization", token);
-      }
-
-      return headers;
-    }
-  }),
+  baseQuery: getBaseQuery(apiBaseUrl, "/users"),
   endpoints: (builder) => ({
 
     registerUser: builder.mutation({
@@ -140,23 +122,11 @@ export const userApi = createApi({
 
 export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserQuery, useGetAllUsersQuery } = userApi;
 
+
+
 export const entryApi = createApi({
   reducerPath: "entryApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: baseUrl + "/entries",
-    prepareHeaders: (headers) => {
-      headers.set("Content-Type", "application/json");
-      headers.set("Accept", "application/json");
-
-      const token = localStorage.getItem("hajiFlourMillJWTToken");
-
-      if (token) {
-        headers.set("Authorization", token);
-      }
-
-      return headers;
-    }
-  }),
+  baseQuery: getBaseQuery(apiBaseUrl, "/entries"),
   endpoints: (builder) => ({
 
     addNewEntry: builder.mutation({

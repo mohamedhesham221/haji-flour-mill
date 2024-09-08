@@ -3,6 +3,10 @@ import { Outlet, Link } from 'react-router-dom';
 import Header from '../Header.js';
 import Footer from '../Footer.js';
 
+import EntrySection from '../admin/sections/EntrySection.js';
+import UserSection from '../admin/sections/UserSection.js';
+import ServiceSection from '../admin/sections/ServiceSection.js';
+
 const AdminLayout = () => {
 
   return (
@@ -15,29 +19,9 @@ const AdminLayout = () => {
             <Link to="new-user" className="btn">New User</Link>
           </div>
           <nav>
-            <div className="section">
-              <h3>Entries</h3>
-              <ul>
-                <li><Link to="new-entry">New Entry</Link></li>
-                <li><Link to="all-entries">Get All Entries</Link></li>
-                <li><Link to="user-entries">Get Entries of User</Link></li>
-              </ul>
-            </div>
-            <div className="section">
-              <h3>Users</h3>
-              <ul>
-                <li><Link to="new-user">Create User</Link></li>
-                <li><Link to="all-users">Get All Users</Link></li>
-                <li><Link to="user-details">Get a Single User</Link></li>
-              </ul>
-            </div>
-            <div className="section">
-              <h3>Services</h3>
-              <ul>
-                <li><Link to="add-service">Add Service</Link></li>
-                <li><Link to="all-services">Get All Services</Link></li>
-              </ul>
-            </div>
+            <EntrySection />
+            <UserSection />
+            <ServiceSection />
           </nav>
         </aside>
         <main className="content admin-content">
