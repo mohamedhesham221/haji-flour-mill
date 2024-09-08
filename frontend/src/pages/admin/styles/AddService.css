@@ -1,0 +1,89 @@
+.add-service-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 20px 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.add-service-container h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.add-service-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.add-service-form input,
+.add-service-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  color: #333;
+}
+
+.add-service-form textarea {
+  resize: vertical;
+}
+
+.add-service-form input:focus,
+.add-service-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.add-service-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.add-service-button:hover {
+  background-color: #0056b3;
+}
+
+.add-service-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.query-error {
+  color: #e74c3c;
+  font-size: 1rem;
+  margin-top: 15px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .add-service-container {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .add-service-form label {
+    font-size: 1rem;
+  }
+
+  .add-service-button {
+    font-size: 1.1rem;
+  }
+}

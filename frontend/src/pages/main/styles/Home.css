@@ -33,3 +33,112 @@
 .banner .heading small {
   font-size: 24px;
 }
+
+.main-text {
+  font-size: 18px;
+  padding: 32px;
+}
+
+.sub-text {
+  display: flex;
+}
+
+.sub-text div {
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.sub-text .red{
+  background-color: #ff6363;
+}
+
+.sub-text .yellow{
+  background-color: #f0af00;
+}
+
+.sub-text .green{
+  background-color: #1eb279;
+}
+
+h3.title{
+  font-size: 24px;
+  padding: 12px;
+  margin: 6px;
+  border-top: 3px solid #dddddd;
+  border-bottom: 3px solid #dddddd;
+  
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.service {
+  flex-basis: 275px;
+  display: flex;
+  box-sizing: border-box;
+  padding: 30px;
+  margin: 10px;
+  border: 2px solid #d3d3d3;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+}
+
+.service h4 {
+  font-size: 24px;
+  padding: 12px;
+  margin: 6px;
+  border-top: 3px solid #dddddd;
+  border-bottom: 3px solid #dddddd;
+}
+
+.service p {
+  padding: 15px 30px;
+}
+
+.service img {
+  width: 40%;
+  min-width: 300px;
+  max-height: 300px;
+  border-radius: 10px;
+}
+
+.services-link {
+  padding: 20px;
+}
+
+.services-link a {
+  text-decoration: none;
+  padding: 15px;
+  background-color: #e8e232;
+  border-radius: 5px;
+  font-size: 24px;
+  color: black;
+}
+
+@media (max-width: 600px) {
+  .sub-text {
+    flex-direction: column;
+  }
+
+  .service {
+    flex-direction: column;
+  }
+
+  .service img {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .service{
+    padding: 50px;
+  }
+  
+}

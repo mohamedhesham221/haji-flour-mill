@@ -39,10 +39,10 @@ const AllServices = () => {
   const services = data?.services;
 
   return (
-    <div className="all-services-container">
+    <div className="all-services-page-container">
       {deletingError && <p className="query-error">Error deleting service</p>}
       <h1>All Services</h1>
-      <div className="services-grid">
+      <div className="services-container">
         {services?.map((service) => (
           <div key={service._id} className="service-card">
             <h3>{service.name}</h3>
@@ -51,7 +51,7 @@ const AllServices = () => {
             <p><b>Description:</b> {service.description}</p>
             <div className="service-card-actions">
               <button onClick={() => handleEdit(service._id)} className="edit-button">Edit</button>
-              <button onClick={() => handleDelete(service._id, service.name)} className="delete-button" disabled={isDeleting}>Delete</button>
+              <button onClick={() => handleDelete(service._id, service.name)} className="delete-button">Delete</button>
             </div>
           </div>
         ))}

@@ -17,10 +17,6 @@ const linkItems = [
   {
     title: "Pricing",
     pathname: "/pricing"
-  },
-  {
-    title: "Contact",
-    pathname: "/contact"
   }
 ]
 

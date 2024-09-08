@@ -41,6 +41,7 @@ const Login = ({ navigateTo = "", admin = false }) => {
 
   return (
     <div className="login-container">
+      <h3>{ admin ? "Login Admin" : "Login User" }</h3>
       <div className="login-box">
         <form className="login-form" onSubmit={submitHandler}>
           <div className="input-group">

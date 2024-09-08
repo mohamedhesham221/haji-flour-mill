@@ -1,5 +1,3 @@
-import "./styles/AllEntries.css";
-
 import { useGetAllEntriesQuery } from "../../store/APISlice";
 
 import EntriesComponent from "../../components/EntriesComponent";

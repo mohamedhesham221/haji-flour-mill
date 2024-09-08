@@ -1,3 +1,5 @@
+import "./styles/Pricing.css";
+
 import { useGetAllServicesQuery } from "../../store/APISlice.js";
 
 const Pricing = () => {
@@ -14,12 +16,12 @@ const Pricing = () => {
   if (data) services = data.services;
 
   return (
-    <div className="pricing">
+    <div className="pricing-page-container">
       <h2>Our Pricing</h2>
-      <ul>
+      <div className="pricing-container">
         {services.length > 0 &&
           services.map((service) => (
-            <li key={service._id}>
+            <div key={service._id} className="pricing-card">
               <h3>{service.name}</h3>
               <p>
                 Price (Cash): {service.price.cash} <small>Rs</small>/
@@ -29,10 +31,11 @@ const Pricing = () => {
                 Price (Annually): {service.price.annually} <small>Rs</small>/
                 <small>Kg</small>
               </p>
-            </li>
+            </div>
           ))}
-      </ul>
+      </div>
     </div>
+
   );
 };
 

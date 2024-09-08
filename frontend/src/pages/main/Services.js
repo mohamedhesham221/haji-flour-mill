@@ -1,3 +1,5 @@
+import "./styles/Services.css";
+
 import { useGetAllServicesQuery } from "../../store/APISlice.js";
 
 const Services = () => {
@@ -13,18 +15,20 @@ const Services = () => {
   const services = data?.services
 
   return (
-    <div className="services">
+    <div className="services-page-container">
       <h2>Our Services</h2>
-      <ul>
+      <div className="services-container">
         {services.length > 0 &&
           services.map((service) => (
-            <li key={service._id}>
+            <div key={service._id} className="service-card">
               <h3>{service.name}</h3>
               <p>{service.description}</p>
-            </li>
+            </div>
           ))}
-      </ul>
+      </div>
+
     </div>
+
   );
 };
 
