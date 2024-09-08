@@ -8,10 +8,22 @@
 </head>
 
 <body>
-  <h1>Haji Flour Mill</h1>
-  <div>
-    <p>Admin <strong><%= username %></strong> created successfully.</p>
-    <a href="/"><button>Home</button></a>
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">
+        <h1><a href="/">Haji Flour Mill</a></h1>
+      </div>
+    </nav>
+  </header>
+  <div class="signup-admin-container">
+    <h1 class="signup-success-heading">Haji Flour Mill</h1>
+    <div class="signup-success-container">
+      <p class="success-message">Admin <strong><%= username %></strong> created successfully.</p>
+      <a href="/" class="home-link">
+        <button class="home-btn">Home</button>
+      </a>
+    </div>
   </div>
+
 </body>
 </html>

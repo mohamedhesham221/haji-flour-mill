@@ -6,6 +6,7 @@ export default async (req, res) => {
     let {username} = await signupAdmin(userDetails);
     res.render("adminSignUpSuccess", {username});
   } catch (error) {
+    console.error(error);
     res.redirect("/admin/signup");
   }
 }
