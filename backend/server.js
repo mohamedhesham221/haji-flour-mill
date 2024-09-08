@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 3030;
 customStrategies(passport);
 app.use(cors({origin: "http://localhost:3000"}));
 app.use("/assets", express.static("public"));
-// app.use(express.static(join("public", "client")));
+app.use(express.static(join("public", "client")));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.set("view engine", "ejs");
@@ -27,12 +27,9 @@ app.set("view engine", "ejs");
 app.use("/admin", adminRouter);
 app.use("/api/v1", apiV1Router);
 
-// app.get("/*", (req, res) => {
-//   res.sendFile(join(__dirname, "public", "client", "index.html"));
-// });
-app.get("/", (req, res) => {
-  res.send("Hi! from server.")
-})
+app.get("/*", (req, res) => {
+  res.sendFile(join(__dirname, "public", "client", "index.html"));
+});
 
 Promise.all([mongoose.connect(process.env.DATABASE_CONNECTION_STRING)])
   .then(() => {
