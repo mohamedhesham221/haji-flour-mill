@@ -1,7 +1,6 @@
 import { Router } from "express";
 import signupAdmin from "./signup-admin.js";
 import loginAdmin from "./login-admin.js";
-import { authanticateAdmin } from "../../middlewares/authAdmin.js";
 
 const router = Router();
 
