@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const apiBaseUrl = "/api/v1";
+const apiBaseUrl = "http://localhost:3030/api/v1";
 
 const getBaseQuery = (rootUrl, subUrl) => {
   return fetchBaseQuery({
@@ -20,7 +20,7 @@ const getBaseQuery = (rootUrl, subUrl) => {
 
 export const adminApi = createApi({
   reducerPath: "adminApi",
-  baseQuery: getBaseQuery("", "/admin"),
+  baseQuery: getBaseQuery("http://localhost:3030", "/admin"),
   endpoints: (builder) => ({
     loginAdmin: builder.mutation({
       query: (credentials) => ({

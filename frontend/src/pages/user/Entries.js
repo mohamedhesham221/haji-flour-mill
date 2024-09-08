@@ -1,5 +1,3 @@
-import "./styles/Entries.css";
-
 import { useSelector, shallowEqual } from "react-redux";
 import { useGetUserEntriesQuery } from "../../store/APISlice";
 

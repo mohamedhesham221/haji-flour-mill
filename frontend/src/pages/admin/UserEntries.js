@@ -1,13 +1,10 @@
-import "./styles/UserEntries.css";
-
 import { useGetUserEntriesQuery } from "../../store/APISlice";
 
+import UserSearchComponent from "../../components/admin/UserSearchComponent";
 import EntriesComponent from "../../components/EntriesComponent";
 import { useState, useRef } from "react";
 
 const UserEntries = () => {
-
-  console.log("Rendering the UserEntries page.");
 
   const [username, setUsername] = useState(null);
   const usernameRef = useRef();
@@ -30,19 +27,13 @@ const UserEntries = () => {
 
   return (
     <div >
-      <div className="entry-search-container">
-        <h1>Search User Entries</h1>
-        <form onSubmit={handleSubmit} className="entry-search-form">
-          <input
-            className="username-input"
-            type="text"
-            placeholder="Enter username"
-            ref={usernameRef}
-            required
-          />
-          <button type="submit" className="submit-button" disabled={isLoading}>{ isLoading ? "Getting Entries..." : "Get Entries" }</button>
-        </form>
-      </div>
+      <UserSearchComponent
+        title="Search User Entries"
+        isLoading={isLoading}
+        usernameRef={usernameRef}
+        buttonText="Entries"
+        handleSubmit={handleSubmit}
+      />
       {entries &&
         <EntriesComponent entries={entries} username={username} />
       }
