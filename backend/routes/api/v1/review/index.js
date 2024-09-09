@@ -8,12 +8,16 @@ import getServiceReviews from "./get-service-reviews.js";
 
 const router = Router();
 
+// Any logged in user can post a review.
 router.post("/add", passport.authenticate("jwt", {session: false}), addNewReview);
 
+// Anyone can access the reviews.
 router.get("/all", getAllReviews);
 
+// Only Admin can get the reviews posted by a user.
 router.get("/user/:userId", authanticateAdmin, getReviewsByUser);
 
+// Anyone can access the reviews for a perticular service.
 router.get("/service/:serviceId", getServiceReviews);
 
 export default router;

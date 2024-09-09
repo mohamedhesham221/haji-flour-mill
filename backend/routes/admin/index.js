@@ -4,6 +4,7 @@ import loginAdmin from "./login-admin.js";
 
 const router = Router();
 
+// Using route to serve requests coming on same path but with different HTTP method.
 router
   .route("/signup")
   .get((req, res) => {

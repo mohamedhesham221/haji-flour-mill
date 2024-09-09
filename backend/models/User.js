@@ -37,6 +37,11 @@ const userSchema = new Schema({
   isAdmin: {type: Boolean, default: false}
 });
 
+/**
+ * Define a per hook for "save" action on model.
+ * 
+ * It will hash the password before saving it to the database.
+ */
 userSchema.pre("save", function (next) {
   if (!this.isModified("password")) return next();
 
@@ -44,6 +49,12 @@ userSchema.pre("save", function (next) {
   next();
 })
 
+/**
+ * Checks for password validation by comparing the stored password with incoming password.
+ * 
+ * @param {String} password password to validate.
+ * @returns a resolved promise.
+ */
 userSchema.methods.checkPassword = async function (password) {
   try {
     const isMatch = await bcrypt.compare(password, this.password);
