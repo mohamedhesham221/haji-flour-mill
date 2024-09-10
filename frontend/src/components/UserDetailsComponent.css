@@ -16,9 +16,11 @@
 }
 
 .profile-container p {
-
+  display: flex;
+  justify-content: space-between;
   font-size: 1.1rem;
   color: #555;
+  border-bottom: 1px solid #ebebeb;
   margin-bottom: 10px;
 }
 

@@ -1,5 +1,9 @@
 import { getUser } from "../../../../controllers/user/UserController.js";
 
+
+/**
+ * Sends the user in response if found.
+ */
 export default async (req, res) => {
   try {
     const { identifier } = req.params;
@@ -7,5 +11,5 @@ export default async (req, res) => {
     res.json({ user });
   } catch (error) {
     res.status(error.status).json({ ...error, message: "Server error" });
-  }
-}
+  };
+};

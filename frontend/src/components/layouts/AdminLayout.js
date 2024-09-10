@@ -7,6 +7,8 @@ import EntrySection from '../admin/sections/EntrySection.js';
 import UserSection from '../admin/sections/UserSection.js';
 import ServiceSection from '../admin/sections/ServiceSection.js';
 
+// Shows the AdminLayout in pages.
+// Containes logout button in header.
 const AdminLayout = () => {
 
   return (

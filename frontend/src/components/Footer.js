@@ -1,3 +1,4 @@
+// Footer component to render footer information in layouts.
 import "./Footer.css"
 
 const Footer = () => {

@@ -1,9 +1,14 @@
+// A component to render entry details in tabular form.
 import "./EntriesComponent.css";
 
+/**
+ * It takes entries and username as props to show on UI
+ */
 const EntriesComponent = ({entries, username}) => {
 
   return (
     <div className="entries-page">
+      {/* If username is provided, show the username on screen. */}
       {username
         ? <h2>Entries for {username}</h2>
         : <h2>All Entries</h2>

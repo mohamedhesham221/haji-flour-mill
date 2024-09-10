@@ -1,3 +1,4 @@
+// A page component to show Home page of the site.
 import { Link } from "react-router-dom";
 import "./styles/Home.css";
 

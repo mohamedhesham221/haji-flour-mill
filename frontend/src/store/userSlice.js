@@ -1,5 +1,7 @@
+// Local slice to store details of loggedIn user.
 import { createSlice } from "@reduxjs/toolkit";
 
+// Set initial state to null.
 const initialState = {
   user: null
 }

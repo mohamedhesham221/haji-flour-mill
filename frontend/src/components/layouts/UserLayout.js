@@ -3,6 +3,8 @@ import { Outlet, Link } from 'react-router-dom';
 import Header from '../Header.js';
 import Footer from '../Footer.js';
 
+// Shows the UserLayout in pages.
+// Containes logout button in header.
 const UserLayout = () => {
   return (
     <div className="top-container user-layout-container">

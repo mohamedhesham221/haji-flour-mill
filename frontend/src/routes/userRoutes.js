@@ -1,3 +1,4 @@
+// All routes related to UserLayout (user route).
 import Protected from "../components/Protected.js";
 
 import UserLayout from "../components/layouts/UserLayout.js";
