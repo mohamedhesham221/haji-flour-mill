@@ -9,19 +9,19 @@
 }
 
 .entries-table th, .entries-table td {
-  border: 1px solid #ddd;
+  border: 1px solid #d5d5d5;
   padding: 8px;
 }
 
 .entries-table th {
-  background-color: #f2f2f2;
+  background-color: #d5d5d5;
   text-align: left;
 }
 
 .entries-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #e6e6e6;
 }
 
 .entries-table tr:hover {
-  background-color: #ddd;
+  background-color: #dadada;
 }

@@ -1,9 +1,11 @@
+// A page component to get user details and add it to the server.
 import React, { useEffect, useState } from "react";
 import { useRegisterUserMutation } from "../../store/APISlice";
 import './styles/NewUser.css';
 
 const NewUser = () => {
-
+  
+  // Set local state to get form input values using controlled form.
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -13,14 +15,18 @@ const NewUser = () => {
     password: ""
   });
 
+  // Use Register User mutation hook to add new user in database.
   const [registerUser, { isLoading, isError, error, data }] = useRegisterUserMutation();
 
+  // Rerenders the component after the user has been successfully added and data has been returned from the mutation.
+  // Show success message alert to the user with the `unique username` returned by server.
   useEffect(() => {
     if (data) {
       alert(`User "${data.user.username}" created successfully.`)
     }
   }, [data]);
 
+  // Changes the state value as input value changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -29,9 +35,17 @@ const NewUser = () => {
     });
   };
 
+  /**
+   * Adds new user.
+   * 
+   * @param {Event} e event that triggered the function call.
+   */
   const handleSubmit = async (e) => {
+    // Prevent default behaviour of the event fire.
     e.preventDefault();
-    console.log("Form data: ", formData);
+
+    // Trigger the mutation using registerUser method with form data.
+    // Reset the form input values to empty strings.
     try {
       await registerUser(formData).unwrap();
       setFormData({

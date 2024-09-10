@@ -1,3 +1,4 @@
+// All routes related to AdminLayout (admin route).
 import AdminLayout from "../components/layouts/AdminLayout.js";
 
 import ProtectedAdmin from "../components/ProtectedAdmin.js";

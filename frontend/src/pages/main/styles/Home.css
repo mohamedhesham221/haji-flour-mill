@@ -4,8 +4,10 @@
   align-items: center;
   width: 100%;
   height: 350px;
-  background: rgb(204, 197, 187) url(//unsplash.it/900/350/?blur);
-  background-size: cover;
+  background: rgb(204, 197, 187) url("../../../../public/ingredient-bags-full-flour.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @keyframes appear {
@@ -21,6 +23,7 @@
 }
 
 .banner .heading {
+  background-color: #20202045;
   position: relative;
   flex: 1;
   text-align: center;

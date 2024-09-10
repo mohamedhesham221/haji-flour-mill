@@ -1,3 +1,4 @@
+// A page component to show login form of Admin.
 import Login from "../../components/Login";
 
 const LoginAdmin = () => {

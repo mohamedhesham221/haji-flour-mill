@@ -35,11 +35,44 @@ Link to site [Haji Flour Mill](https://haji-flour-mill.onrender.com/)
 - User can also see it's entries of the business.
 
 
-## Use in development environment
-- First fork and clone the repository to your local device.
+## Run in local environment
+First fork and clone the repository to your local device.
+
+#### Setup backend
+- Go to the backend directory by typing the command:
+  - `cd backend`
 - Run `npm install` to install all the dependencies.
 - Create a `.env` file and add the following variables: 
   - `DATABASE_CONNECTION_STRING` - set it's value to a mongodb cluster connection string.
   - `JWT_SECRET` - set a unique and secure jwt secret key.
-- Run `npm start` to start the server. (It will run on port 3030)
-  
+  - `CORS_ORIGIN` - set it to the client app url if any. (In case of development environment, it is going to be `http://localhost:3000`).
+- Run `npm start` to start the server. It will run on port `3030`. (In case of development you can run `npm run dev` to automatically restart the server after making changes.)
+
+To run the app locally this is all you need to do.\
+In case you want to contribute or optimise the code, see the steps below.
+
+## How to contribute
+First fork and clone the repository to your local device.
+
+#### Setup backend
+- Setup the backend as described [Here](#setup-backend)
+
+#### Setup frontend
+- Go to the frontend direactory by typing the command (from haji-flour-mill directory):
+  - `cd frontend`
+- Run `npm install` to install all the dependencies.
+- Open the `src/store/APISlice.js` file.
+  - Set the variable `apiBaseUrl` from `/api/v1` to `http://localhost:3030/api/v1`.
+  - Set the variable `adminBaseUrl` from `""` to `http://localhost:3030`.
+- Run `npm start` to start the server. 
+- After making changes run `npm build` to build the production build of the app. There will be a new folder named `build` inside `frontend`.
+
+Copy the content of `build` folder.\
+Go back to `backend` directory, go to `public/client` folder, `delete` the existing content of the `client` folder and paste the content of the `build` folder.
+
+Now run `npm start` in `backend` and test your changes by going to url `http://localhost:3030`.
+
+
+To contribute to the project, push your local changes to your forked repository.\
+Make a pull request to original repository and start conversation about the changes.
+

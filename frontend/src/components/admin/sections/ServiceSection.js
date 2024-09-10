@@ -1,3 +1,4 @@
+// A simple component to render section links in admin page.
 import { Link } from "react-router-dom";
 
 const ServiceSection = () => {

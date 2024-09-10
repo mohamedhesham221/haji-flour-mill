@@ -1,3 +1,4 @@
+// All routes related to MainLayout (home route).
 import MainLayout from "../components/layouts/MainLayout.js";
 
 import Home from "../pages/main/Home.js";

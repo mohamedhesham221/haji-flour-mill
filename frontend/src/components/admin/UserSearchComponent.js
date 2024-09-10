@@ -1,5 +1,7 @@
+// A common component to display a form input to search users in different use cases.
 import "./UserSearchComponent.css";
 
+// Takes props from parent component to show related content in UI and implement inverse data flow
 const UserSearchComponent = ({ title = "", usernameRef, isLoading, buttonText, handleSubmit }) => {
 
   return (

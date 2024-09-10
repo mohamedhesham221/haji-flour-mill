@@ -1,18 +1,23 @@
+// A page component to show all the users.
 import "./styles/AllUsers.css";
 
 import { useGetAllUsersQuery } from "../../store/APISlice";
 
 const AllUsers = () => {
 
+  // Use query hook to get all the users on rendering the component.
   const { data, isLoading, isError, error } = useGetAllUsersQuery();
   
+  // Show loading message on query loading.
   if (isLoading) return <p className="query-loading">Loading...</p>
   
+  // Show error message on query error.
   if (isError) {
     console.error("Error: ", error);
     return <p className="query-error">An error has occured!</p>;
   }
 
+  // Get the users from the data returned by the query.
   const users = data?.users;
 
   return (

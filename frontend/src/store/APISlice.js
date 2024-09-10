@@ -1,7 +1,17 @@
+// Create Api slice to define all queries and mutations to fetch and cache the server data.
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+// Set base url
 const apiBaseUrl = "/api/v1";
+const adminBaseUrl = "";
 
+/**
+ * Sets baseUrl and prepares headers to use in every query and mutation.
+ * 
+ * @param {String} rootUrl main url to use in query.
+ * @param {String} subUrl url related to Api.
+ * @returns Base query to use in every query and mutation
+ */
 const getBaseQuery = (rootUrl, subUrl) => {
   return fetchBaseQuery({
     baseUrl: rootUrl + subUrl,
@@ -9,6 +19,7 @@ const getBaseQuery = (rootUrl, subUrl) => {
       headers.set("Content-Type", "application/json");
       headers.set("Accept", "application/json");
 
+      // Set token to `Authorization` header, if present in localStorage.
       const token = window.localStorage.getItem("hajiFlourMillJWTToken");
 
       if (token) headers.set("Authorization", token);
@@ -18,9 +29,10 @@ const getBaseQuery = (rootUrl, subUrl) => {
   })
 }
 
+// Provides mutation to login Admin.
 export const adminApi = createApi({
   reducerPath: "adminApi",
-  baseQuery: getBaseQuery("", "/admin"),
+  baseQuery: getBaseQuery(adminBaseUrl, "/admin"),
   endpoints: (builder) => ({
     loginAdmin: builder.mutation({
       query: (credentials) => ({
@@ -35,7 +47,9 @@ export const adminApi = createApi({
 export const { useLoginAdminMutation } = adminApi;
 
 
-
+// Provides Queries and Mutations related to Services.
+// Uses tags to cache the data of the query.
+// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetces on next request.
 export const serviceApi = createApi({
   reducerPath: "serviceApi",
   baseQuery: getBaseQuery(apiBaseUrl, "/services"),
@@ -77,7 +91,9 @@ export const serviceApi = createApi({
 export const { useAddServiceMutation, useUpdateServiceMutation, useDeleteServiceMutation, useGetAllServicesQuery } = serviceApi;
 
 
-
+// Provides Queries and Mutations related to Users.
+// Uses tags to cache the data of the query.
+// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetces on next request.
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: getBaseQuery(apiBaseUrl, "/users"),
@@ -123,7 +139,9 @@ export const userApi = createApi({
 export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserQuery, useGetAllUsersQuery } = userApi;
 
 
-
+// Provides Queries and Mutations related to Entries.
+// Uses tags to cache the data of the query.
+// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetces on next request.
 export const entryApi = createApi({
   reducerPath: "entryApi",
   baseQuery: getBaseQuery(apiBaseUrl, "/entries"),

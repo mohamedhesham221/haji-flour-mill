@@ -37,6 +37,11 @@
   margin-bottom: 8px;
 }
 
+.service-card small {
+  font-size: 0.9rem;
+  color: #888;
+}
+
 .service-card-actions {
   display: flex;
   justify-content: space-around;
