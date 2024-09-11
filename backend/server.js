@@ -1,7 +1,6 @@
 // Import required modules and files.
 import 'dotenv/config';
-import {fileURLToPath} from "url";
-import { join, dirname } from 'path';
+import { join } from 'path';
 import express from "express";
 import mongoose from "mongoose";
 import passport from 'passport';
@@ -11,9 +10,6 @@ import cors from "cors";
 // Import different routers.
 import adminRouter from "./routes/admin/index.js";
 import apiV1Router from "./routes/api/v1/index.js";
-
-// Gets the current directory path.
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Creates express app.
 const app = express();
@@ -28,8 +24,8 @@ customStrategies(passport);
 app.use(cors({ origin: process.env.CORS_ORIGIN }));
 
 // Serves static files at /assets path and also serve client app from any path.
-app.use("/assets", express.static(join(__dirname, "public")));
-app.use(express.static(join(__dirname, "public", "client")));
+app.use("/assets", express.static("public"));
+app.use(express.static(join("public", "client")));
 
 // Sets api to extract body data either from urlencoded form or json form.
 app.use(express.urlencoded({ extended: false }));
@@ -44,7 +40,7 @@ app.use("/api/v1", apiV1Router);
 
 // Serve all the client routes through this wild card route. It will match all the routes other than the above specified routes.
 app.get("/*", (req, res) => {
-  res.sendFile(join(__dirname, "public", "client", "index.html"));
+  res.sendFile(join("public", "client", "index.html"));
 });
 
 // Make sure database is connected before listening the server.
