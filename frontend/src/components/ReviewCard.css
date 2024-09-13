@@ -1,0 +1,21 @@
+.review-card {
+  box-sizing: border-box;
+  width: min(600px, 70vw);
+  min-height: 150px;
+  padding: 20px;
+  border: 1px solid #bbbbbb45;
+  background-color: #f8f8f8;
+}
+
+.review-details {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  border-bottom: 1px solid rgb(142, 142, 142);
+
+}
+
+.review-text {
+  color: #777777;
+  font-size: 17px;
+}

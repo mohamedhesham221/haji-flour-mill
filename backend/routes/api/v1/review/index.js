@@ -15,7 +15,7 @@ router.post("/add", passport.authenticate("jwt", {session: false}), addNewReview
 router.get("/all", getAllReviews);
 
 // Only Admin can get the reviews posted by a user.
-router.get("/user/:userId", authanticateAdmin, getReviewsByUser);
+router.get("/user/:username", authanticateAdmin, getReviewsByUser);
 
 // Anyone can access the reviews for a perticular service.
 router.get("/service/:serviceId", getServiceReviews);

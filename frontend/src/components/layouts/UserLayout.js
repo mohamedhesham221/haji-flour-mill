@@ -15,6 +15,7 @@ const UserLayout = () => {
             <ul>
               <li><Link to="profile">Profile</Link></li>
               <li><Link to="entries">My Entries</Link></li>
+              <li><Link to="reviews/add">GIVE REVIEW</Link></li>
             </ul>
           </nav>
         </aside>

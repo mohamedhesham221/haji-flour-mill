@@ -87,6 +87,7 @@ export const loginAdmin = async ({ username, password }) => {
       };
     };
   } catch (error) {
+    console.error(error);
     return Promise.reject({ status: 500 });
   };
 };

@@ -12,6 +12,9 @@ import UserDetails from "../pages/admin/UserDetails.js";
 import AddService from "../pages/admin/AddService.js";
 import AllServices from "../pages/admin/AllServices.js";
 import UpdateService from "../pages/admin/UpdateService.js";
+import AllReviews from "../pages/admin/AllReviews.js";
+import UserReviews from "../pages/admin/UserReviews.js";
+import ServiceReviewsAdmin from "../pages/admin/ServiceReviewsAdmin.js";
 
 const adminRoutes = {
   path: "admin",
@@ -25,6 +28,7 @@ const adminRoutes = {
           index: true,
           element: <NewEntry />
         },
+        // Entry section routes.
         {
           path: "new-entry",
           element: <NewEntry />
@@ -37,6 +41,7 @@ const adminRoutes = {
           path: "user-entries",
           element: <UserEntries />
         },
+        // User section routes
         {
           path: "new-user",
           element: <NewUser />
@@ -49,6 +54,7 @@ const adminRoutes = {
           path: "user-details",
           element: <UserDetails />
         },
+        // Service section routes
         {
           path: "add-service",
           element: <AddService />
@@ -60,6 +66,19 @@ const adminRoutes = {
         {
           path: "edit-service/:id",
           element: <UpdateService />
+        },
+        // Review section routes.
+        {
+          path: "all-reviews",
+          element: <AllReviews />
+        },
+        {
+          path: "user-reviews",
+          element: <UserReviews />
+        },
+        {
+          path: "service-reviews",
+          element: <ServiceReviewsAdmin />
         }
       ]
     }
