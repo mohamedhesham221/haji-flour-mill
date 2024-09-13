@@ -5,6 +5,7 @@ import UserLayout from "../components/layouts/UserLayout.js";
 
 import Profile from "../pages/user/Profile.js";
 import Entries from "../pages/user/Entries.js";
+import AddReview from "../pages/user/AddReview.js";
 
 const userRoutes = {
   path: "user",
@@ -26,6 +27,10 @@ const userRoutes = {
           path: "entries",
           element: <Entries />,
         },
+        {
+          path: "reviews/add",
+          element: <AddReview />
+        }
       ],
     },
   ],

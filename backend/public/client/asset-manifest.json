@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.ff830073.css",
-    "main.js": "/static/js/main.f9682442.js",
-    "static/media/ingredient-bags-full-flour.jpg": "/static/media/ingredient-bags-full-flour.e0ad373d1cbe824c7028.jpg",
+    "main.css": "/static/css/main.802c41bf.css",
+    "main.js": "/static/js/main.e2c1698d.js",
     "index.html": "/index.html",
-    "main.ff830073.css.map": "/static/css/main.ff830073.css.map",
-    "main.f9682442.js.map": "/static/js/main.f9682442.js.map"
+    "main.802c41bf.css.map": "/static/css/main.802c41bf.css.map",
+    "main.e2c1698d.js.map": "/static/js/main.e2c1698d.js.map"
   },
   "entrypoints": [
-    "static/css/main.ff830073.css",
-    "static/js/main.f9682442.js"
+    "static/css/main.802c41bf.css",
+    "static/js/main.e2c1698d.js"
   ]
 }

@@ -6,10 +6,9 @@ import { getReviewsByUser } from "../../../../controllers/review/ReviewControlle
  * In case of error sends error in response along with failure status.
  */
 export default async (req, res) => {
-  const { userId } = req.params;
-
+  const { username } = req.params;
   try {
-    const { reviews } = await getReviewsByUser(userId);
+    const { reviews } = await getReviewsByUser(username);
     res.status(200).json({ reviews });
   } catch (error) {
     res.status(error.status).json({ ...error, message: "Server error" });

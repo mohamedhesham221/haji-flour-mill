@@ -34,6 +34,7 @@ export const adminApi = createApi({
   reducerPath: "adminApi",
   baseQuery: getBaseQuery(adminBaseUrl, "/admin"),
   endpoints: (builder) => ({
+    // Login Admin request.
     loginAdmin: builder.mutation({
       query: (credentials) => ({
         url: "login",
@@ -44,17 +45,19 @@ export const adminApi = createApi({
   })
 });
 
+// Export all automatically generated hooks to perform requests from components.
 export const { useLoginAdminMutation } = adminApi;
 
 
 // Provides Queries and Mutations related to Services.
 // Uses tags to cache the data of the query.
-// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetces on next request.
+// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetches on next request.
 export const serviceApi = createApi({
   reducerPath: "serviceApi",
   baseQuery: getBaseQuery(apiBaseUrl, "/services"),
   endpoints: (builder) => ({
 
+    // Add new service request.
     addService: builder.mutation({
       query: (newservice) => ({
         url: "/add",
@@ -64,6 +67,7 @@ export const serviceApi = createApi({
       invalidatesTags: ["Services"]
     }),
 
+    // Update service request.
     updateService: builder.mutation({
       query: ({id, updatedServiceDetails}) => ({
         url: `update/${id}`,
@@ -73,6 +77,7 @@ export const serviceApi = createApi({
       invalidatesTags: ["Services"]
     }),
 
+    // Delete service request.
     deleteService: builder.mutation({
       query: (id) => ({
         url: `delete/${id}`,
@@ -81,6 +86,7 @@ export const serviceApi = createApi({
       invalidatesTags: ["Services"]
     }),
     
+    // Get all services request.
     getAllServices: builder.query({
       query: () => "all",
       providesTags: ["Services"]
@@ -88,17 +94,19 @@ export const serviceApi = createApi({
   })
 });
 
+// Export all automatically generated hooks to perform requests from components.
 export const { useAddServiceMutation, useUpdateServiceMutation, useDeleteServiceMutation, useGetAllServicesQuery } = serviceApi;
 
 
 // Provides Queries and Mutations related to Users.
 // Uses tags to cache the data of the query.
-// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetces on next request.
+// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetches on next request.
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: getBaseQuery(apiBaseUrl, "/users"),
   endpoints: (builder) => ({
 
+    // Register new user request.
     registerUser: builder.mutation({
       query: (userdetails) => ({
         url: "register",
@@ -108,6 +116,7 @@ export const userApi = createApi({
       invalidatesTags: ["User", "Users"]
     }),
 
+    // Login user request.
     loginUser: builder.mutation({
       query: (credentials) => ({
         url: "login",
@@ -116,6 +125,7 @@ export const userApi = createApi({
       })
     }),
 
+    // Verify user and token request.
     initUser: builder.mutation({
       query: () => ({
         url: "verify",
@@ -123,11 +133,13 @@ export const userApi = createApi({
       })
     }),
 
+    // Get a user with id or username request.
     getUser: builder.query({
-      query: (id) => `user/${id}`,
+      query: (identifier) => `user/${identifier}`,
       providesTags: ["User"]
     }),
     
+    // Get all users request.
     getAllUsers: builder.query({
       query: () => "all",
       providesTags: ["Users"]
@@ -136,17 +148,19 @@ export const userApi = createApi({
   })
 })
 
+// Export all automatically generated hooks to perform requests from components.
 export const { useRegisterUserMutation, useLoginUserMutation, useInitUserMutation, useGetUserQuery, useGetAllUsersQuery } = userApi;
 
 
 // Provides Queries and Mutations related to Entries.
 // Uses tags to cache the data of the query.
-// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetces on next request.
+// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetches on next request.
 export const entryApi = createApi({
   reducerPath: "entryApi",
   baseQuery: getBaseQuery(apiBaseUrl, "/entries"),
   endpoints: (builder) => ({
 
+    // Add new entry request.
     addNewEntry: builder.mutation({
       query: (entryDetails) => ({
         url: "new",
@@ -156,11 +170,13 @@ export const entryApi = createApi({
       invalidatesTags: ["UserEntries", "AllEntries"]
     }),
 
+    // Get all entries request.
     getAllEntries: builder.query({
       query: () => "all",
       providesTags: ["AllEntries"]
     }),
 
+    // Get a user's entries request.
     getUserEntries: builder.query({
       query: (username) => `user/${username}`,
       providesTags: ["UserEntries"]
@@ -168,4 +184,46 @@ export const entryApi = createApi({
   })
 });
 
+// Export all automatically generated hooks to perform requests from components.
 export const { useAddNewEntryMutation, useGetUserEntriesQuery, useGetAllEntriesQuery } = entryApi;
+
+// Provides Queries and Mutations related to Reviews.
+// Uses tags to cache the data of the query.
+// Invalidates tags based on the mutation to invalidate the cache related to the tag and refetches on next request.
+export const reviewApi = createApi({
+  reducerPath: "reviewApi",
+  baseQuery: getBaseQuery(apiBaseUrl, "/reviews"),
+  endpoints: (builder) => ({
+
+    // Add a new review request.
+    addReview: builder.mutation({
+      query: (reviewDetails) => ({
+        url: "add",
+        method: "POST",
+        body: reviewDetails
+      }),
+      invalidatesTags: ["AllReviews", "ServiceReviews", "UserReviews"]
+    }),
+
+    // Get all reviews request.
+    getAllReviews: builder.query({
+      query: () => "all",
+      providesTags: ["AllReviews"]
+    }),
+
+    // Get reviews of a service request.
+    getServiceReviews: builder.query({
+      query: (serviceId) => `service/${serviceId}`,
+      providesTags: ["ServiceReviews"]
+    }),
+
+    // Get reviews by a user request.
+    getReviewsByUser: builder.query({
+      query: (username) => `user/${username}`,
+      providesTags: ["UserReviews"]
+    })
+  })
+});
+
+// Export all automatically generated hooks to perform requests from components.
+export const { useAddReviewMutation, useGetAllReviewsQuery, useGetServiceReviewsQuery, useGetReviewsByUserQuery } = reviewApi;
