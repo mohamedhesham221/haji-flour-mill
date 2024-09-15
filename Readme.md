@@ -96,6 +96,9 @@ First fork and clone the repository to your local device.
 #### Setup frontend
 - Do all the steps in [Setup frontend](#setup-frontend) 
 - Do the desired changes in code.
+- Before making the build, change the base urls to their previous value in `src/store/APISlice.js` :
+  - Set the variable `apiBaseUrl` from `http://localhost:3030/api/v1` to `/api/v1`.
+  - Set the variable `adminBaseUrl` from `http://localhost:3030` to `""`.
 - After making changes run `npm build` to build the production build of the app. There will be a new folder named `build` inside `frontend`.
 
 Copy the content of `build` folder.\
