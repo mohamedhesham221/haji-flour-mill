@@ -115,3 +115,25 @@ With that said at the end I would like to say:
 > **A project is never complete and there is always something to improve.**
 
 So, I am constantly working on code optimization and adding new features. You Can always come back and check updates.
+
+## UI Showcase
+To explore public pages go to the [Haji Flour Mill](https://haji-flour-mill.onrender.com/)
+
+Here are the UI screenshots of the protected pages which require login.
+
+### User pages
+1. User login page  
+\
+![User Login Page](/screenshots/01.%20user%20login%20page.png?raw=true "User Login Page")
+
+2. User Profile page  
+\
+![User Profile Page](/screenshots/02.%20user%20profile%20page.png?raw=true "User Profile Page")
+
+3. User Entries page  
+\
+![User Entries Page](/screenshots/03.%20user%20my%20entries%20page.png "User Entries Page") 
+
+4. User Give Reviews page  
+\
+![Give Review Page](/screenshots/04.%20user%20give%20review%20page.png "Give Review Page")
