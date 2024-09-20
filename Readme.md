@@ -125,18 +125,96 @@ To explore public pages go to the [Haji Flour Mill](https://haji-flour-mill.onre
 Here are the UI screenshots of the protected pages which require login.
 
 ### User pages
-1. User login page  
+1. User Login page  \
+  It will show error message if credantials are wrong.
 \
 ![User Login Page](/screenshots/01.%20user%20login%20page.png?raw=true "User Login Page")
 
-2. User Profile page  
+2. User Profile page
 \
 ![User Profile Page](/screenshots/02.%20user%20profile%20page.png?raw=true "User Profile Page")
 
-3. User Entries page  
+3. User Entries page
 \
-![User Entries Page](/screenshots/03.%20user%20my%20entries%20page.png "User Entries Page") 
+![User Entries Page](/screenshots/03.%20user%20my%20entries%20page.png?raw=true "User Entries Page") 
 
-4. User Give Reviews page  
+4. Give Review page
 \
-![Give Review Page](/screenshots/04.%20user%20give%20review%20page.png "Give Review Page")
+![Give Review Page](/screenshots/04.%20user%20give%20review%20page.png?raw=true "Give Review Page")
+
+### Admin pages
+1. Admin Login page \
+  It will show error message if credantials are wrong or user is unauthorized.
+\
+![Admin Login Page](/screenshots/05.%20admin%20login%20page.png?raw=true "Admin Login Page")
+
+2. New Entry page
+\
+![New Entry Page](/screenshots/06.%20admin%20new%20entry%20page.png?raw=true "New Entry Page")
+
+3. New Entry success alert  \
+  Success alert will contain the amount of the entry.
+\
+![New Entry Success Alert](/screenshots/07.%20admin%20new%20entry%20success%20alert.png?raw=true "New Entry Success Alert")
+
+4. All Entries page
+\
+![All Entries Page](/screenshots/08.%20admin%20all%20entries%20page.png?raw=true "All Entries Page")
+
+5. Single User's Entries page
+\
+![Single User's Entries Page](/screenshots/09.%20admin%20single%20user%20entries%20page.png?raw=true "Single User's Entries Page")
+
+6. Create User page
+\
+![Create User Page](/screenshots/10.%20admin%20create%20user%20page.png?raw=true "Create User Page")
+
+7. Create User success alert  \
+  Success alert will contain the `unique username` for the newly registered user, required for login process and filling the entry.
+\
+![Create User Success Alert](/screenshots/11.%20admin%20create%20user%20success%20alert.png?raw=true "Create User Success Alert")
+
+8. All Users page
+\
+![All Users Page](/screenshots/12.%20admin%20all%20users%20page.png?raw=true "All Users Page")
+
+9. Single User's Details page
+\
+![Single User's Details Page](/screenshots/13.%20admin%20single%20user%20details%20page.png?raw=true "Single User's Details Page")
+
+10. Add Service page
+\
+![Add Service Page](/screenshots/14.%20admin%20add%20service%20page.png?raw=true "Add Service Page")
+
+11. All Services page \
+  Each service card contains `edit` and `delete` button.
+\
+![All Services Page](/screenshots/15.%20admin%20all%20services%20page.png?raw=true "All Services Page")
+
+12. Update Service page \
+  Clicking the `edit` button in above service card will open the this page.
+\
+![Update Service Page](/screenshots/16.%20admin%20update%20service%20page.png?raw=true "Update Service Page")
+
+13. Confirm Delete Service alert  \
+  Clicking the `delete` button will ask the user for confirmation to delete the service.
+\
+![Confirm Delete Service Alert](/screenshots/17.%20admin%20confirm%20delete%20service%20alert.png?raw=true "Confirm Delete Service Alert")
+
+14. Delete Service success alert
+\
+![Delete Service success Alert](/screenshots/18.%20admin%20delete%20service%20success%20alert.png?raw=true "Delete Service success Alert")
+
+15. All Reviews page
+\
+![All Reviews Page](/screenshots/19.%20admin%20all%20reviews%20page.png?raw=true "All Reviews Page")
+
+16. Service Reviews page  \
+  Reviews for a perticular service.
+\
+![Service Reviews Page](/screenshots/20.%20admin%20service%20reviews%20page.png?raw=true "Service Reviews Page")
+
+17. Reviews by User page  \
+  Reviews given by a perticular user.
+\
+![Reviews by User Page](/screenshots/21.%20admin%20reviews%20by%20user%20page.png?raw=true "Reviews by User Page")
