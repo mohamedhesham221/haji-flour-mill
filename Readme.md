@@ -1,20 +1,20 @@
 # Haji Flour Mill
-'Haji Flour Mill' is a commercial site for a my own small mill business to keep track of users(customers) and daily entries. \
-Link to site [Haji Flour Mill](https://haji-flour-mill.onrender.com/)
+'Haji Flour Mill' is a commercial site for my own small mill business to keep track of users(customers) and daily entries. \
+Checkout [Haji Flour Mill](https://haji-flour-mill.onrender.com/)
 
 ## Main Functionalities
-- Anyone can view the home, services and pricing of the services page.
+- Anyone can view home, services and pricing of the services pages.
 - Logged in users can see their profile details and all of their entries from the business. They can also give review to service. (Users themself can not register, only admin can register new user.)
 - Logged in admin can manage administrative tasks such as:
     - Add a new entry
-    - See all the entries
+    - See all entries
     - See a user's entries
     - Create a new user
     - See all users
     - See a user's details
     - Add a new service
-    - Update a service
-    - Delete a service
+    - Update an existing service
+    - Delete an existing service
     - See all reviews
     - See a service's reviews
     - See reviews by a user
@@ -22,7 +22,7 @@ Link to site [Haji Flour Mill](https://haji-flour-mill.onrender.com/)
 ## Features
 
 - Allows user to explore services and their prices that business provide.
-- Admin is created using a specific route, not disclosed or accessible from the app, which will be known to owners of the business and high level development administrators only.
+- Admin is created using a specific route, not disclosed in or accessible from the app, which will only be known to owners of the business and higher level development administrators only.
   - Currently it's a normal signup form, working on a feature that will allow only owner and the administrative person to create admin, even if route has been known to someone else.
 - Generates an automated unique username for every user to differentiate between users.
   - It is automated, as only admins are allowed to register new users, and it's unneccessary load for them to think of a unique username for every registered user.
@@ -38,16 +38,16 @@ Link to site [Haji Flour Mill](https://haji-flour-mill.onrender.com/)
 
 
 ## How to use
-#### As a admin
+#### As an admin
 - Create admin by going to the route `/admin/signup`.
   - Server will create a `unique username` and show it on the screen, remember it for further login.
-- Login as a admin by clicking the `Login-Admin` button.
+- Login as an admin by clicking the `Login-Admin` button.
   - Enter the credentials to login as admin.
-  - If a normal user tries to login as admin, it will show `access forbidden` error.
+  - If a normal user tries to login as an admin, it will show `access forbidden` error.
 - After successfully logging in, admin will see the `New Entry` page. (It is default render as it is the primary work of the admin.)
 - From here admin has access to many administrative tasks.
 - When admin crates a new user, a `unique username` for the user is generated and displayed on the screen, admin must tell the user it's `username` and `password` for login process.
-- For ease, I suggest use the mobile no. as password, it will be easy for the user to remember. But it's not compulsory.
+- For ease, I suggest use the mobile number as password, it will be easy for the user to remember. But it's not compulsory.
 
 #### As a user
 - Login as user by clicking the `Login-User` button.
@@ -63,7 +63,7 @@ First fork and clone the repository to your local device.
 #### Setup backend
 - Go to the backend directory by typing the command:
   - `cd backend`
-- Run `npm install` to install all the dependencies.
+- Run `npm install` to install all dependencies.
 - Create a `.env` file and add the following variables: 
   - `DATABASE_CONNECTION_STRING` - set it's value to a mongodb cluster connection string.
   - `JWT_SECRET` - set a unique and secure jwt secret key.
@@ -77,26 +77,26 @@ First run the backend.
 
 - Go to the frontend direactory by typing the command (from haji-flour-mill directory):
   - `cd frontend`
-- Run `npm install` to install all the dependencies.
+- Run `npm install` to install all dependencies.
 - Open the `src/store/APISlice.js` file.
   - Set the variable `apiBaseUrl` from `/api/v1` to `http://localhost:3030/api/v1`.
   - Set the variable `adminBaseUrl` from `""` to `http://localhost:3030`.
 - Run `npm start` to start the server. 
 
 
-To run the app locally this is all you need to do.\
+To run the app locally this is all you need to do.  
 In case you want to contribute or optimise the code, see the steps below.
 
 ## How to contribute
 First fork and clone the repository to your local device.
 
 #### Setup backend
-- Setup the backend as described [Here](#setup-backend)
+- Setup the backend as described [here](#setup-backend)
 
 #### Setup frontend
 - Do all the steps in [Setup frontend](#setup-frontend) 
 - Do the desired changes in code.
-- Before making the build, change the base urls to their previous value in `src/store/APISlice.js` :
+- Before making the build, change base urls to their previous values in `src/store/APISlice.js` :
   - Set the variable `apiBaseUrl` from `http://localhost:3030/api/v1` to `/api/v1`.
   - Set the variable `adminBaseUrl` from `http://localhost:3030` to `""`.
 - After making changes run `npm build` to build the production build of the app. There will be a new folder named `build` inside `frontend`.
@@ -107,17 +107,16 @@ Go back to `backend` directory, go to `public/client` folder, `delete` the exist
 Now run `npm start` in `backend` and test your changes by going to url `http://localhost:3030`.
 
 
-To contribute to the project, push your local changes to your forked repository.\
+To contribute to the project, push your local changes to your forked repository.  
 Make a pull request to original repository and start conversation about the changes.
 
 \
 \
 With that said at the end I would like to say:
 
-
 > **A project is never complete and there is always something to improve.**
 
-So, I am constantly working on code optimization and adding new features. You Can always come back and check updates.
+I am constantly working on code optimization and adding new features. You Can always come back and check updates.
 
 ## UI Showcase
 To explore public pages go to the [Haji Flour Mill](https://haji-flour-mill.onrender.com/)
@@ -125,96 +124,75 @@ To explore public pages go to the [Haji Flour Mill](https://haji-flour-mill.onre
 Here are the UI screenshots of the protected pages which require login.
 
 ### User pages
-1. User Login page  \
+1. User Login page  
   It will show error message if credantials are wrong.
-\
-![User Login Page](/screenshots/01.%20user%20login%20page.png?raw=true "User Login Page")
+  ![User Login Page](/screenshots/01.%20user%20login%20page.png?raw=true "User Login Page")
 
-2. User Profile page
-\
-![User Profile Page](/screenshots/02.%20user%20profile%20page.png?raw=true "User Profile Page")
+2. User Profile page  
+  ![User Profile Page](/screenshots/02.%20user%20profile%20page.png?raw=true "User Profile Page")
 
-3. User Entries page
-\
-![User Entries Page](/screenshots/03.%20user%20my%20entries%20page.png?raw=true "User Entries Page") 
+3. User Entries page  
+  ![User Entries Page](/screenshots/03.%20user%20my%20entries%20page.png?raw=true "User Entries Page") 
 
-4. Give Review page
-\
-![Give Review Page](/screenshots/04.%20user%20give%20review%20page.png?raw=true "Give Review Page")
+4. Give Review page 
+  ![Give Review Page](/screenshots/04.%20user%20give%20review%20page.png?raw=true "Give Review Page")
 
 ### Admin pages
-1. Admin Login page \
+1. Admin Login page  
   It will show error message if credantials are wrong or user is unauthorized.
-\
-![Admin Login Page](/screenshots/05.%20admin%20login%20page.png?raw=true "Admin Login Page")
+  ![Admin Login Page](/screenshots/05.%20admin%20login%20page.png?raw=true "Admin Login Page")
 
 2. New Entry page
-\
-![New Entry Page](/screenshots/06.%20admin%20new%20entry%20page.png?raw=true "New Entry Page")
+  ![New Entry Page](/screenshots/06.%20admin%20new%20entry%20page.png?raw=true "New Entry Page")
 
-3. New Entry success alert  \
+3. New Entry success alert  
   Success alert will contain the amount of the entry.
-\
-![New Entry Success Alert](/screenshots/07.%20admin%20new%20entry%20success%20alert.png?raw=true "New Entry Success Alert")
+  ![New Entry Success Alert](/screenshots/07.%20admin%20new%20entry%20success%20alert.png?raw=true "New Entry Success Alert")
 
 4. All Entries page
-\
-![All Entries Page](/screenshots/08.%20admin%20all%20entries%20page.png?raw=true "All Entries Page")
+  ![All Entries Page](/screenshots/08.%20admin%20all%20entries%20page.png?raw=true "All Entries Page")
 
 5. Single User's Entries page
-\
-![Single User's Entries Page](/screenshots/09.%20admin%20single%20user%20entries%20page.png?raw=true "Single User's Entries Page")
+  ![Single User's Entries Page](/screenshots/09.%20admin%20single%20user%20entries%20page.png?raw=true "Single User's Entries Page")
 
 6. Create User page
-\
-![Create User Page](/screenshots/10.%20admin%20create%20user%20page.png?raw=true "Create User Page")
+  ![Create User Page](/screenshots/10.%20admin%20create%20user%20page.png?raw=true "Create User Page")
 
-7. Create User success alert  \
+7. Create User success alert  
   Success alert will contain the `unique username` for the newly registered user, required for login process and filling the entry.
-\
-![Create User Success Alert](/screenshots/11.%20admin%20create%20user%20success%20alert.png?raw=true "Create User Success Alert")
+  ![Create User Success Alert](/screenshots/11.%20admin%20create%20user%20success%20alert.png?raw=true "Create User Success Alert")
 
 8. All Users page
-\
-![All Users Page](/screenshots/12.%20admin%20all%20users%20page.png?raw=true "All Users Page")
+  ![All Users Page](/screenshots/12.%20admin%20all%20users%20page.png?raw=true "All Users Page")
 
 9. Single User's Details page
-\
-![Single User's Details Page](/screenshots/13.%20admin%20single%20user%20details%20page.png?raw=true "Single User's Details Page")
+  ![Single User's Details Page](/screenshots/13.%20admin%20single%20user%20details%20page.png?raw=true "Single User's Details Page")
 
 10. Add Service page
-\
-![Add Service Page](/screenshots/14.%20admin%20add%20service%20page.png?raw=true "Add Service Page")
+  ![Add Service Page](/screenshots/14.%20admin%20add%20service%20page.png?raw=true "Add Service Page")
 
-11. All Services page \
+11. All Services page  
   Each service card contains `edit` and `delete` button.
-\
-![All Services Page](/screenshots/15.%20admin%20all%20services%20page.png?raw=true "All Services Page")
+  ![All Services Page](/screenshots/15.%20admin%20all%20services%20page.png?raw=true "All Services Page")
 
-12. Update Service page \
-  Clicking the `edit` button in above service card will open the this page.
-\
-![Update Service Page](/screenshots/16.%20admin%20update%20service%20page.png?raw=true "Update Service Page")
+12. Update Service page  
+  Clicking the `edit` button in above service card will open this page.
+  ![Update Service Page](/screenshots/16.%20admin%20update%20service%20page.png?raw=true "Update Service Page")
 
-13. Confirm Delete Service alert  \
-  Clicking the `delete` button will ask the user for confirmation to delete the service.
-\
-![Confirm Delete Service Alert](/screenshots/17.%20admin%20confirm%20delete%20service%20alert.png?raw=true "Confirm Delete Service Alert")
+13. Confirm Delete Service alert  
+  Clicking the `delete` button will ask the admin for confirmation to delete the service.
+  ![Confirm Delete Service Alert](/screenshots/17.%20admin%20confirm%20delete%20service%20alert.png?raw=true "Confirm Delete Service Alert")
 
 14. Delete Service success alert
-\
-![Delete Service success Alert](/screenshots/18.%20admin%20delete%20service%20success%20alert.png?raw=true "Delete Service success Alert")
+  ![Delete Service success Alert](/screenshots/18.%20admin%20delete%20service%20success%20alert.png?raw=true "Delete Service success Alert")
 
 15. All Reviews page
-\
-![All Reviews Page](/screenshots/19.%20admin%20all%20reviews%20page.png?raw=true "All Reviews Page")
+  ![All Reviews Page](/screenshots/19.%20admin%20all%20reviews%20page.png?raw=true "All Reviews Page")
 
-16. Service Reviews page  \
+16. Service Reviews page  
   Reviews for a perticular service.
-\
-![Service Reviews Page](/screenshots/20.%20admin%20service%20reviews%20page.png?raw=true "Service Reviews Page")
+  ![Service Reviews Page](/screenshots/20.%20admin%20service%20reviews%20page.png?raw=true "Service Reviews Page")
 
-17. Reviews by User page  \
+17. Reviews by User page  
   Reviews given by a perticular user.
-\
-![Reviews by User Page](/screenshots/21.%20admin%20reviews%20by%20user%20page.png?raw=true "Reviews by User Page")
+  ![Reviews by User Page](/screenshots/21.%20admin%20reviews%20by%20user%20page.png?raw=true "Reviews by User Page")
