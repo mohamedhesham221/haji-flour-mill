@@ -1,0 +1,62 @@
+.contact-page-container {
+  padding: 20px;
+  text-align: center;
+  padding: 25px 120px;
+}
+.contact-page-container p {
+  font-size: 18px;
+  text-align: start;
+}
+.contact-page-container h2 {
+  text-align: start;
+  border-top: 3px solid #dddddd;
+  border-bottom: 3px solid #dddddd;
+  padding: 15px 0;
+  margin-top: 15px;
+}
+.form-map-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
+  gap: 30px;
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+form {
+  width: 100%;
+}
+fieldset {
+  width: 100%;
+  border: none;
+}
+legend {
+  display: none;
+}
+label {
+  display: inline-block;
+}
+input,textarea, select {
+  width: 100%;
+  display: block;
+  background-color: #f7f7f7;
+  margin-bottom: 20px;
+  padding: 0.8rem !important;
+  box-sizing: border-box;
+}
+select {
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+}
+textarea {
+  min-height: 30px !important;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.google-map {
+  width: 100%;
+}
+.google-map div{
+  border-radius: 4px
+}
