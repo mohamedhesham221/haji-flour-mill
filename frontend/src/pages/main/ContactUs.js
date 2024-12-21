@@ -8,9 +8,9 @@ const ContactUs = () => {
   const [selectedCity, setSelectedCity] = useState('');
   const [userMessage, setUserMessage] = useState('');
   const NAME_regEx = '^[A-Za-z]+';
-  const MAIL_regEx = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$';
+  const MAIL_regEx = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+/.[A-Za-z]{2,}$';
 
-  const cites = [
+  const cities = [
     {
       'name': 'Talera, Bundi',
       'value': 'Talera-Bundi'
@@ -43,7 +43,7 @@ const ContactUs = () => {
   return (
     <>
       <div className="contact-page-container">
-        <p>Have a question, suggestion, or idea? We’re here to listen and make continuous improvements. Your feedback is valuable in helping us grow and serve you better.</p>
+        <p>Have a question, suggestion, or idea? We're here to listen and make continuous improvements. Your feedback is valuable in helping us grow and serve you better.</p>
         <h2>Contact</h2>
         <div className="form-map-container">
           <form onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ const ContactUs = () => {
               <label htmlFor="last-name">Last Name</label> <span>*</span>
               <input type="text" value={lastName} id="last-name" name={NAME_regEx} placeholder="Your Last Name . . ."
                 onChange={(e) => setLastName(e.target.value)} required pattern={NAME_regEx} />
-              <label for="email-address">Email Address </label><span>*</span>
+              <label htmlFor="email-address">Email Address </label><span>*</span>
               <input type="email" id="email-address" name="email-address" placeholder="You Email . . ." 
                 onChange={(e) => setEmail(e.target.value)} pattern={MAIL_regEx} required />
             </fieldset>
@@ -66,8 +66,8 @@ const ContactUs = () => {
                 onChange={(e) => setSelectedCity(e.target.value)} >
                   <option value='' disabled>Pick your city - - -</option>
                 {
-                  cites.map((city, index) =>
-                    <option value={city.value} key={index} disabled={selectedCity == '--'}>{city.name}</option>)
+                  cities.map((city, index) =>
+                    <option value={city.value} key={index} disabled={selectedCity === '--'}>{city.name}</option>)
                 }
               </select>
               <label htmlFor="msg">Message</label> <span>*</span>
